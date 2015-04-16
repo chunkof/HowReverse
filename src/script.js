@@ -3,6 +3,8 @@ function importJS() {
   scripts =
     [
       // script start------------------------------
+      'script/common_def.js',
+      'script/model.js',
       'script/view_model.js'
       // script end------------------------------
     ]
