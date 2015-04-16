@@ -25,6 +25,7 @@
     self.model = model;
     self.w = model.w;
     self.h = model.h;
+    self.nextStone = ko.observable(model.nextStone);
     // cells
     self.cells =  ko.observableArray();
     for (var y=0; y<self.h; ++y){
@@ -41,12 +42,13 @@
         return;
       }
       model.putStone(cell.x, cell.y);
-      self.syncCells();
+      self.syncModel();
     };
     //-------
     // sync cells
     //-------
-    self.syncCells = function(){
+    self.syncModel = function(){
+      // cells
       for (var y=0; y<self.h; ++y){
         for (var x=0; x<self.w; ++x) {
           var num = x + y*self.w;
@@ -54,8 +56,9 @@
           cell.type(model.cells[y][x]);
         }
       }
+      // other
+      self.nextStone(model.nextStone);
     };
-    self.syncCells();
   };
 
   //------------------
