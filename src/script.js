@@ -4,7 +4,9 @@ function importJS() {
     [
       // script start------------------------------
       'script/common_def.js',
+      'script/utility.js',
       'script/model.js',
+      'script/bord_maker.js',
       'script/view_model.js'
       // script end------------------------------
     ]

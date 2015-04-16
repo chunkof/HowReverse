@@ -5,14 +5,14 @@
   //------------------
   MyDef.ViewM.Cell = function (spec) {
     var self = this;
-    self.owner     = spec.owner;
-    self.type      = ko.observable(CELL_TYPE.EMPTY);
-    self.cell_x    = spec.cell_x;
-    self.cell_y    = spec.cell_y;
-    self.row_end   = (spec.owner.w == self.cell_x+1);
+    self.owner = spec.owner;
+    self.type = ko.observable(spec.type);
+    self.x = spec.x;
+    self.y = spec.y;
+    self.row_end = (spec.owner.w == self.x+1);
     self.notifyClick = function(){
-      console.log("x:"+self.cell_x+ ",y:"+self.cell_y);
-      self.type(CELL_TYPE.STONE1);
+      console.log("x:"+self.x+ ",y:"+self.y);
+      self.owner.cellClicked(self);
     };
   };
 
@@ -21,16 +21,41 @@
   //------------------
   MyDef.ViewM.Bord = function (spec) {
     var self = this;
-    self.w = spec.w;
-    self.h = spec.h;
+    var model = spec.model;
+    self.model = model;
+    self.w = model.w;
+    self.h = model.h;
     // cells
     self.cells =  ko.observableArray();
-    for (var y=0; y<spec.h; ++y){
-      for (var x=0; x<spec.w; ++x) {
-        var cell = new MyDef.ViewM.Cell({owner:self, cell_x:x, cell_y:y});
+    for (var y=0; y<self.h; ++y){
+      for (var x=0; x<self.w; ++x) {
+        var cell = new MyDef.ViewM.Cell({owner:self, x:x, y:y, type:model.cells[y][x]});
         self.cells.push(cell);
       }
     }
+    //-------
+    // cell clicked
+    //-------
+    self.cellClicked = function(cell){
+      if (CELL_TYPE.EMPTY != cell.type()){
+        return;
+      }
+      model.putStone(cell.x, cell.y);
+      self.syncCells();
+    };
+    //-------
+    // sync cells
+    //-------
+    self.syncCells = function(){
+      for (var y=0; y<self.h; ++y){
+        for (var x=0; x<self.w; ++x) {
+          var num = x + y*self.w;
+          var cell = self.cells()[num];
+          cell.type(model.cells[y][x]);
+        }
+      }
+    };
+    self.syncCells();
   };
 
   //------------------
@@ -38,8 +63,10 @@
   //------------------
   var ViewModel = function() {
     var self = this;
-    self.subject_bord = ko.observable(new MyDef.ViewM.Bord({w:8, h:8}));
-    self.play_bord    = ko.observable(new MyDef.ViewM.Bord({w:8, h:8}));
+    var subject = MyDef.BordMaker.getSubject();
+    var play    = MyDef.BordMaker.getEmpty(subject);
+    self.subject_bord = ko.observable(new MyDef.ViewM.Bord({model:subject}));
+    self.play_bord    = ko.observable(new MyDef.ViewM.Bord({model:play}));
   };
 
   // Activates knockout.js

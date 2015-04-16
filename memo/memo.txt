@@ -28,6 +28,9 @@ var subject = new Bord({
 	}
 }{);
 
+CreateEmptyBord(subject){
+	
+}
 
 0,1,2
 
