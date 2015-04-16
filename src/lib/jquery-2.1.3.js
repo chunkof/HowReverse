@@ -2564,7 +2564,7 @@ if ( !assert(function( div ) {
 	div.innerHTML = "<a href='#'></a>";
 	return div.firstChild.getAttribute("href") === "#" ;
 }) ) {
-	addHandle( "type|href|height|width", function( elem, name, isXML ) {
+	addHandle( "type|href|h|w", function( elem, name, isXML ) {
 		if ( !isXML ) {
 			return elem.getAttribute( name, name.toLowerCase() === "type" ? 1 : 2 );
 		}
@@ -5509,7 +5509,7 @@ function defaultDisplay( nodeName ) {
 		if ( display === "none" || !display ) {
 
 			// Use the already-created iframe if possible
-			iframe = (iframe || jQuery( "<iframe frameborder='0' width='0' height='0'/>" )).appendTo( doc.documentElement );
+			iframe = (iframe || jQuery( "<iframe frameborder='0' w='0' h='0'/>" )).appendTo( doc.documentElement );
 
 			// Always write a new HTML skeleton so Webkit and Firefox don't choke on reuse
 			doc = iframe[ 0 ].contentDocument;
@@ -5565,21 +5565,21 @@ function curCSS( elem, name, computed ) {
 
 		// Support: iOS < 6
 		// A tribute to the "awesome hack by Dean Edwards"
-		// iOS < 6 (at least) returns percentage for a larger set of values, but width seems to be reliably pixels
+		// iOS < 6 (at least) returns percentage for a larger set of values, but w seems to be reliably pixels
 		// this is against the CSSOM draft spec: http://dev.w3.org/csswg/cssom/#resolved-values
 		if ( rnumnonpx.test( ret ) && rmargin.test( name ) ) {
 
 			// Remember the original values
-			width = style.width;
+			width = style.w;
 			minWidth = style.minWidth;
 			maxWidth = style.maxWidth;
 
 			// Put in the new values to get a computed value out
-			style.minWidth = style.maxWidth = style.width = ret;
-			ret = computed.width;
+			style.minWidth = style.maxWidth = style.w = ret;
+			ret = computed.w;
 
 			// Revert the changed values
-			style.width = width;
+			style.w = width;
 			style.minWidth = minWidth;
 			style.maxWidth = maxWidth;
 		}
@@ -5627,7 +5627,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 	div.cloneNode( true ).style.backgroundClip = "";
 	support.clearCloneStyle = div.style.backgroundClip === "content-box";
 
-	container.style.cssText = "border:0;width:0;height:0;top:0;left:-9999px;margin-top:1px;" +
+	container.style.cssText = "border:0;w:0;h:0;top:0;left:-9999px;margin-top:1px;" +
 		"position:absolute";
 	container.appendChild( div );
 
@@ -5639,13 +5639,13 @@ function addGetHookIf( conditionFn, hookFn ) {
 			// Vendor-prefix box-sizing
 			"-webkit-box-sizing:border-box;-moz-box-sizing:border-box;" +
 			"box-sizing:border-box;display:block;margin-top:1%;top:1%;" +
-			"border:1px;padding:1px;width:4px;position:absolute";
+			"border:1px;padding:1px;w:4px;position:absolute";
 		div.innerHTML = "";
 		docElem.appendChild( container );
 
 		var divStyle = window.getComputedStyle( div, null );
 		pixelPositionVal = divStyle.top !== "1%";
-		boxSizingReliableVal = divStyle.width === "4px";
+		boxSizingReliableVal = divStyle.w === "4px";
 
 		docElem.removeChild( container );
 	}
@@ -5671,8 +5671,8 @@ function addGetHookIf( conditionFn, hookFn ) {
 			reliableMarginRight: function() {
 
 				// Support: Android 2.3
-				// Check if div with explicit width and no margin-right incorrectly
-				// gets computed margin-right based on width of container. (#3333)
+				// Check if div with explicit w and no margin-right incorrectly
+				// gets computed margin-right based on w of container. (#3333)
 				// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
 				// This support function is only executed once so no memoizing is needed.
 				var ret,
@@ -5684,8 +5684,8 @@ function addGetHookIf( conditionFn, hookFn ) {
 					// Vendor-prefix box-sizing
 					"-webkit-box-sizing:content-box;-moz-box-sizing:content-box;" +
 					"box-sizing:content-box;display:block;margin:0;border:0;padding:0";
-				marginDiv.style.marginRight = marginDiv.style.width = "0";
-				div.style.width = "1px";
+				marginDiv.style.marginRight = marginDiv.style.w = "0";
+				div.style.w = "1px";
 				docElem.appendChild( container );
 
 				ret = !parseFloat( window.getComputedStyle( marginDiv, null ).marginRight );
@@ -6331,7 +6331,7 @@ function genFx( type, includeWidth ) {
 		i = 0,
 		attrs = { height: type };
 
-	// If we include width, step value is 1 to do all cssExpand values,
+	// If we include w, step value is 1 to do all cssExpand values,
 	// otherwise step value is 2 to skip over Left and Right
 	includeWidth = includeWidth ? 1 : 0;
 	for ( ; i < 4 ; i += 2 - includeWidth ) {
@@ -6340,7 +6340,7 @@ function genFx( type, includeWidth ) {
 	}
 
 	if ( includeWidth ) {
-		attrs.opacity = attrs.width = type;
+		attrs.opacity = attrs.w = type;
 	}
 
 	return attrs;
@@ -6394,7 +6394,7 @@ function defaultPrefilter( elem, props, opts ) {
 		});
 	}
 
-	// Height/width overflow pass
+	// Height/w overflow pass
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 		// Make sure that nothing sneaks out
 		// Record all 3 overflow attributes because IE9-10 do not
@@ -6402,8 +6402,8 @@ function defaultPrefilter( elem, props, opts ) {
 		// overflowY are set to the same value
 		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
 
-		// Set display property to inline-block for height/width
-		// animations on inline elements that are having width/height animated
+		// Set display property to inline-block for h/w
+		// animations on inline elements that are having w/h animated
 		display = jQuery.css( elem, "display" );
 
 		// Test default display if display is currently "none"
@@ -9096,7 +9096,7 @@ jQuery.each( [ "top", "left" ], function( i, prop ) {
 });
 
 
-// Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
+// Create innerHeight, innerWidth, h, w, outerHeight and outerWidth methods
 jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 	jQuery.each( { padding: "inner" + name, content: type, "": "outer" + name }, function( defaultExtra, funcName ) {
 		// Margin is only for outerHeight, outerWidth
@@ -9114,7 +9114,7 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 					return elem.document.documentElement[ "client" + name ];
 				}
 
-				// Get document width or height
+				// Get document w or h
 				if ( elem.nodeType === 9 ) {
 					doc = elem.documentElement;
 
@@ -9128,10 +9128,10 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 				}
 
 				return value === undefined ?
-					// Get width or height on the element, requesting but not forcing parseFloat
+					// Get w or h on the element, requesting but not forcing parseFloat
 					jQuery.css( elem, type, extra ) :
 
-					// Set width or height on the element
+					// Set w or h on the element
 					jQuery.style( elem, type, value, extra );
 			}, type, chainable ? margin : undefined, chainable, null );
 		};

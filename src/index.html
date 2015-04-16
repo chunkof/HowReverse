@@ -14,6 +14,14 @@
 </head>
 <body>
 <strong>HowReverse</strong>
+<div id="Bord" data-bind="with: bord">
+  w: <span data-bind="text: w"></span>
+  h: <span data-bind="text: h"></span><br>
+  <div data-bind="foreach: cells">
+    <span data-bind="text: $data.type, click: notifyClick"></span>
+    <span data-bind="if: $data.row_end"><br></span>
+  </div>
+</div>
 <script src="script.js"></script>
 </body>
 </html>
