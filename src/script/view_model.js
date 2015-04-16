@@ -3,8 +3,9 @@
   //------------------
   // Cell
   //------------------
-  var ViewCell = function (spec) {
+  MyDef.ViewM.Cell = function (spec) {
     var self = this;
+    self.owner     = spec.owner;
     self.type      = ko.observable(CELL_TYPE.EMPTY);
     self.cell_x    = spec.cell_x;
     self.cell_y    = spec.cell_y;
@@ -18,7 +19,7 @@
   //------------------
   // Bord
   //------------------
-  var ViewBord = function (spec) {
+  MyDef.ViewM.Bord = function (spec) {
     var self = this;
     self.w = spec.w;
     self.h = spec.h;
@@ -26,7 +27,7 @@
     self.cells =  ko.observableArray();
     for (var y=0; y<spec.h; ++y){
       for (var x=0; x<spec.w; ++x) {
-        var cell = new ViewCell({owner:self, cell_x:x, cell_y:y});
+        var cell = new MyDef.ViewM.Cell({owner:self, cell_x:x, cell_y:y});
         self.cells.push(cell);
       }
     }
@@ -37,8 +38,8 @@
   //------------------
   var ViewModel = function() {
     var self = this;
-    self.subject_bord = ko.observable(new ViewBord({w:8, h:8}));
-    self.play_bord = ko.observable(new ViewBord({w:8, h:8}));
+    self.subject_bord = ko.observable(new MyDef.ViewM.Bord({w:8, h:8}));
+    self.play_bord    = ko.observable(new MyDef.ViewM.Bord({w:8, h:8}));
   };
 
   // Activates knockout.js
