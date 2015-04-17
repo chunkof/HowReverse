@@ -16,10 +16,14 @@
       self.cells[put_y][put_x] = self.nextStone;
 
       // reverse
-      Logic.reverse(self.cells, self.nextStone, put_x, put_y,   0,-1);
-      Logic.reverse(self.cells, self.nextStone, put_x, put_y,   0, 1);
-      Logic.reverse(self.cells, self.nextStone, put_x, put_y,  -1, 0);
-      Logic.reverse(self.cells, self.nextStone, put_x, put_y,   1, 0);
+      Logic.reverse(self, self.nextStone, put_x, put_y,   0,-1);
+      Logic.reverse(self, self.nextStone, put_x, put_y,   0, 1);
+      Logic.reverse(self, self.nextStone, put_x, put_y,  -1, 0);
+      Logic.reverse(self, self.nextStone, put_x, put_y,   1, 0);
+      Logic.reverse(self, self.nextStone, put_x, put_y,  -1, 1);
+      Logic.reverse(self, self.nextStone, put_x, put_y,  -1,-1);
+      Logic.reverse(self, self.nextStone, put_x, put_y,   1, 1);
+      Logic.reverse(self, self.nextStone, put_x, put_y,   1,-1);
 
       self.nextStone = (self.nextStone==CELL_TYPE.STONE1) ? CELL_TYPE.STONE2: CELL_TYPE.STONE1;
     };
@@ -38,7 +42,7 @@
     var other_s_cnt= 0;
     var do_reverse = false;
     for (var x=put_x+dir_x, y=put_y+dir_y;
-         x<w, y<h;
+         (x>=0)&&(x<w)&&(y>=0)&&(y<h);
          x+=dir_x, y+=dir_y)
     {
       var current = cells[y][x];
@@ -57,7 +61,7 @@
       return;
     }
     for (var x=put_x+dir_x, y=put_y+dir_y;
-         x<w, y<h;
+         (x>=0)&&(x<w)&&(y>=0)&&(y<h);
          x+=dir_x, y+=dir_y)
     {
       var current = cells[y][x];

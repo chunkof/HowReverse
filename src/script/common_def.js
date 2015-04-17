@@ -3,7 +3,7 @@ var CELL_TYPE = {
   BLANK :   '-',
   EMPTY :   '?',
   STONE1:   '*',
-  STONE2:   '@',
+  STONE2:   'o',
   _SIZEOF : 4
 };
 
