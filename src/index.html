@@ -15,19 +15,25 @@
   <script src="lib/URI.js"></script>
 </head>
 <body>
-<strong>Reverse</strong>
-<div class="Bord" data-bind="with: subject_bord">
-  <div data-bind="foreach: cells">
-    <span data-bind="text: $data.type, click: notifyClick"></span>
-    <span data-bind="if: $data.row_end"><br></span>
-  </div>
+<h1>Reverse</h1>
+<h2>subject</h2>
+<div class="bord" data-bind="with: subject_bord">
+  <div data-bind="foreach: cells"><!--
+    --><div class="cell" data-bind="click: notifyClick, css:exist_class"><!--
+        --><div class="stone" data-bind="css: $data.put_class">&nbsp;</div><!--
+    --></div><!--
+    --><span data-bind="if: $data.row_end"><br></span><!--
+  --></div>
 </div>
 <br>
-<div class="Bord" data-bind="with: play_bord">
-  <div data-bind="foreach: cells">
-    <span data-bind="text: $data.type, click: notifyClick"></span>
-    <span data-bind="if: $data.row_end"><br></span>
-  </div>
+<h2>play</h2>
+<div class="bord" data-bind="with: play_bord">
+  <div data-bind="foreach: cells"><!--
+    --><div class="cell" data-bind="click: notifyClick, css:exist_class"><!--
+        --><div class="stone" data-bind="css: $data.put_class">&nbsp;</div><!--
+    --></div><!--
+    --><span data-bind="if: $data.row_end"><br></span><!--
+  --></div>
   <p>next:<span data-bind="text: nextStone"></span></p>
 </div>
 <script src="script.js"></script>

@@ -9,6 +9,17 @@
     self.type = ko.observable(spec.type);
     self.x = spec.x;
     self.y = spec.y;
+    self.exist_class = (CELL_TYPE.BLANK == self.type()) ? "" : "cell_exist";
+    self.put_class = ko.computed(function() {
+      var type = this.type();
+      if (CELL_TYPE.STONE1==type){
+        return "stone1";
+      }
+      if (CELL_TYPE.STONE2==type){
+        return "stone2";
+      }
+      return "";
+    }, this);
     self.row_end = (spec.owner.w == self.x+1);
     self.notifyClick = function(){
       console.log("x:"+self.x+ ",y:"+self.y);
