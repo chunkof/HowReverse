@@ -9,8 +9,8 @@
     self.type = ko.observable(spec.type);
     self.x = spec.x;
     self.y = spec.y;
-    self.exist_class = (CELL_TYPE.BLANK == self.type()) ? "" : "cell_exist";
-    self.put_class = ko.computed(function() {
+    self.existClass = (CELL_TYPE.BLANK == self.type()) ? "" : "cell_exist";
+    self.putClass = ko.computed(function() {
       var type = this.type();
       if (CELL_TYPE.STONE1==type){
         return "stone1";
@@ -37,6 +37,16 @@
     self.w = model.w;
     self.h = model.h;
     self.nextStone = ko.observable(model.nextStone);
+    self.nextStoneClass = ko.computed(function() {
+      var type = this.nextStone();
+      if (CELL_TYPE.STONE1==type){
+        return "stone1";
+      }
+      if (CELL_TYPE.STONE2==type){
+        return "stone2";
+      }
+      return "";
+    }, this);
     // cells
     self.cells =  ko.observableArray();
     for (var y=0; y<self.h; ++y){

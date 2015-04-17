@@ -1,7 +1,7 @@
 body{
 }
 .bord{
-    display:table-cell
+    padding:0px;
 }
 .cell{
     display: inline-block;
@@ -10,20 +10,20 @@ body{
     margin: 0 auto;
     padding: 0;
     border: 1px solid rgba(0, 0, 0, 0);
-    background-color: rgba(0, 0, 0, 0);
+    vertical-align:bottom;
 }
-
 .cell_exist{
     border: 1px solid #203020;
     background-color: #216421;
 }
-
-.stone{
+.cell> .stone{
     position: relative;
     top: 5px;
+    margin: 0 auto;
+}
+.stone{
     width: 22px;
     height: 22px;
-    margin: 0 auto;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0);
 }
