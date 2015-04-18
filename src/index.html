@@ -25,6 +25,12 @@
     --></div><!--
     --><span data-bind="if: $data.row_end"><br></span><!--
   --></div>
+    <div class="bord_info">
+      <br>
+      <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
+      <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;/
+      <span>Total:&nbsp;<span data-bind="text: cntStone1()+cntStone2()"></span></span>
+    </div>
   </div>
   <br>
   <h2>play</h2>
@@ -36,6 +42,12 @@
       --></div><!--
       --><span data-bind="if: $data.row_end"><br></span><!--
     --></div>
+    </div>
+    <div class="bord_info">
+      <br>
+      <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
+      <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;/
+      <span>Total:&nbsp;<span data-bind="text: cntStone1()+cntStone2()"></span></span>
     </div>
     <br>
     <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>

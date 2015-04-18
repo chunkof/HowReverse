@@ -17,6 +17,13 @@ div{
 .bord{
     padding:0px;
 }
+.bord_info{
+    font-size: small;
+}
+.inline_block{
+    display: inline-block;
+}
+
 .cell{
     display: inline-block;
     width: 32px;
@@ -52,4 +59,5 @@ div{
     border-color:#000000;
     background-color: #F0F0F0;
 }
+
 

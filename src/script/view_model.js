@@ -53,13 +53,20 @@
       return "";
     });
     // cells
+    var cnt_stone1=0;
+    var cnt_stone2=0;
     self.cells =  ko.observableArray();
     for (var y=0; y<self.h; ++y){
       for (var x=0; x<self.w; ++x) {
-        var cell = new MyDef.VM.Cell({owner:self, x:x, y:y, type:model.cells[y][x]});
+        var type = model.cells[y][x];
+        var cell = new MyDef.VM.Cell({owner:self, x:x, y:y, type:type});
+        if (CELL_TYPE.STONE1==type) ++cnt_stone1;
+        if (CELL_TYPE.STONE2==type) ++cnt_stone2;
         self.cells.push(cell);
       }
     }
+    self.cntStone1 =ko.observable(cnt_stone1);
+    self.cntStone2 =ko.observable(cnt_stone2);
     //-------
     // cell clicked
     //-------
@@ -82,13 +89,20 @@
     //-------
     self.syncModel = function(){
       // cells
+      var cnt_stone1=0;
+      var cnt_stone2=0;
       for (var y=0; y<self.h; ++y){
         for (var x=0; x<self.w; ++x) {
           var num = x + y*self.w;
           var cell = self.cells()[num];
-          cell.type(model.cells[y][x]);
+          var type = model.cells[y][x];
+          if (CELL_TYPE.STONE1==type) ++cnt_stone1;
+          if (CELL_TYPE.STONE2==type) ++cnt_stone2;
+          cell.type(type);
         }
       }
+      self.cntStone1(cnt_stone1);
+      self.cntStone2(cnt_stone2);
       // other
       self.nextStone(model.nextStone);
     };
