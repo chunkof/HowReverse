@@ -11,7 +11,7 @@ div{
     cursor: default;
 }
 .bord_area{
-    background-color: #BBBBBB;
+    background-color: #CCCCCC;
     overflow: hidden;
 }
 .bord{
@@ -27,8 +27,8 @@ div{
     vertical-align:bottom;
 }
 .cell_exist{
-    border: 1px solid #203020;
-    background-color: #216421;
+    border: 1px solid #204020;
+    background-color: #318431;
 }
 
 .stone{
@@ -46,7 +46,7 @@ div{
 
 .stone1{
     border-color:#000000;
-    background-color: #101010;
+    background-color: #151515;
 }
 .stone2{
     border-color:#000000;

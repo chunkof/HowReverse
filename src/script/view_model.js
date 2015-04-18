@@ -98,6 +98,9 @@
     var play    = MyDef.BordMaker.getEmpty(subject);
     self.subject_bord = ko.observable(new MyDef.ViewM.Bord({model:subject}));
     self.play_bord    = ko.observable(new MyDef.ViewM.Bord({model:play}));
+    self.undo = function(){
+      self.play_bord().undo();
+    };
   };
 
   // Activates knockout.js
