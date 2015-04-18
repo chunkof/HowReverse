@@ -1,29 +1,29 @@
 // Utility
-MyDef.Ut  = [];
+MyUt  = [];
 (function() {
   "use strict";
-  MyDef.Ut.cloneArray = function(org){
+  MyUt.cloneArray = function(org){
     return $.extend(true, [], org);
   };
 })();
 
 // Utility on Domain
-MyDef.UtD = [];
+MyUtD = [];
 (function() {
   "use strict";
-  MyDef.UtD.isStone = function(type){
+  MyUtD.isStone = function(type){
     return  (
       (CELL_TYPE.STONE1==type)||
       (CELL_TYPE.STONE2==type)
     );
 
   };
-  MyDef.UtD.isOtherStone = function(rhs, lhs){
+  MyUtD.isOtherStone = function(rhs, lhs){
     if (rhs == lhs){
       return false;
     }
 
-    var is_stone = MyDef.UtD.isStone(lhs);
+    var is_stone = MyUtD.isStone(lhs);
     return is_stone;
   };
 })();

@@ -8,5 +8,5 @@ var CELL_TYPE = {
 };
 
 var MyDef    = [];
-MyDef.ViewM  = [];
-MyDef.Model  = [];
+MyDef.VM = []; // ViewModel
+MyDef.M  = []; // Model
