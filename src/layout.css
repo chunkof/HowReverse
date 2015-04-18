@@ -1,5 +1,19 @@
 body{
 }
+div{
+}
+.no_select{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    cursor: default;
+}
+.bord_area{
+    background-color: #BBBBBB;
+    overflow: hidden;
+}
 .bord{
     padding:0px;
 }
@@ -16,23 +30,26 @@ body{
     border: 1px solid #203020;
     background-color: #216421;
 }
-.cell> .stone{
-    position: relative;
-    top: 5px;
-    margin: 0 auto;
-}
+
 .stone{
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0);
+    border: 2px solid rgba(0,0,0,0);
 }
+.cell> .stone{
+    position: relative;
+    top: 5px;
+    margin: 0 auto;
+    padding: 0;
+}
+
 .stone1{
-    border: 1px solid #000000;
+    border-color:#000000;
     background-color: #101010;
 }
 .stone2{
-    border: 1px solid #000000;
+    border-color:#000000;
     background-color: #F0F0F0;
 }
 

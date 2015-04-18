@@ -16,30 +16,31 @@
 </head>
 <body>
 <h1>Reverse</h1>
-<h2>subject</h2>
-<div class="bord" data-bind="with: subject_bord">
-  <div data-bind="foreach: cells"><!--
+<div class="bord_area">
+  <h2>subject</h2>
+  <div class="bord" data-bind="with: subject_bord">
+    <div data-bind="foreach: cells"><!--
     --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
-        --><div class="stone" data-bind="css: $data.putClass"></div><!--
+        --><div class="stone no_select" data-bind="css: $data.putClass">&nbsp;</div><!--
     --></div><!--
     --><span data-bind="if: $data.row_end"><br></span><!--
   --></div>
-</div>
-<br>
-<h2>play</h2>
-<div  data-bind="with: play_bord">
-  <div class="bord">
-    <div data-bind="foreach: cells"><!--
+  </div>
+  <br>
+  <h2>play</h2>
+  <div  data-bind="with: play_bord">
+    <div class="bord">
+      <div data-bind="foreach: cells"><!--
       --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
-          --><div class="stone" data-bind="css: $data.putClass"></div><!--
+          --><div class="stone no_select" data-bind="css: $data.putClass">&nbsp;</div><!--
       --></div><!--
       --><span data-bind="if: $data.row_end"><br></span><!--
     --></div>
-
+    </div>
+    <br>
+    <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
+    <p><input type="button" value="Undo" data-bind="click: undo"></p>
   </div>
-  <br>
-  <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
-  <p><input type="button" value="Undo" data-bind="click: undo"></p>
 </div>
 <script src="script.js"></script>
 </body>
