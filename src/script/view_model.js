@@ -66,6 +66,13 @@
       self.syncModel();
     };
     //-------
+    // undo
+    //-------
+    self.undo = function(){
+      model.undo();
+      self.syncModel();
+    };
+    //-------
     // sync cells
     //-------
     self.syncModel = function(){
