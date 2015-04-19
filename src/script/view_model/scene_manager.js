@@ -30,6 +30,13 @@
       self.sceneSubject.deActivate();
       self.scenePlay.activate(subject_id);
     };
+    //--------------------
+    //  End Play
+    //--------------------
+    self.endPlay = function(){
+      self.scenePlay.deActivate();
+      self.sceneSubject.activate();
+    };
   };
   var scene_manager = new MyDef.VM.SceneManager();
   scene_manager.start();

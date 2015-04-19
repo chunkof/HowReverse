@@ -12,6 +12,9 @@
     self.undo = function(){
       self.play_bord().undo();
     };
+    self.back = function(){
+      self.owner.endPlay();
+    };
     // binding
     var scene = $('#scene-play')[0];
     self.isActive = ko.observable(false);
