@@ -9,10 +9,6 @@
     //--------------------
     //  Initialize
     //--------------------
-    var subject = MyDef.BordMaker.getSubject();
-    var play    = MyDef.BordMaker.getEmpty(subject);
-    self.subject_bord = ko.observable(new MyDef.VM.Bord({model:subject}));
-    self.play_bord    = ko.observable(new MyDef.VM.Bord({model:play}));
     self.undo = function(){
       self.play_bord().undo();
     };
@@ -24,7 +20,11 @@
     //--------------------
     //  Activate
     //--------------------
-    self.activate = function(){
+    self.activate = function(subject_id){
+      var subject = MyDef.BordMaker.getSubject(subject_id);
+      var play    = MyDef.BordMaker.getEmpty(subject);
+      self.subject_bord = ko.observable(new MyDef.VM.Bord({model:subject}));
+      self.play_bord    = ko.observable(new MyDef.VM.Bord({model:play}));
       self.isActive(true);
     };
     //--------------------

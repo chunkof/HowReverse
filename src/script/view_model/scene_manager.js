@@ -26,9 +26,9 @@
     //--------------------
     //  Choice Subject
     //--------------------
-    self.choiceSubject = function(){
+    self.choiceSubject = function(subject_id){
       self.sceneSubject.deActivate();
-      self.scenePlay.activate();
+      self.scenePlay.activate(subject_id);
     };
   };
   var scene_manager = new MyDef.VM.SceneManager();

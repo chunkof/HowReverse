@@ -29,8 +29,8 @@
     //--------------------
     //  choice
     //--------------------
-    self.choice = function(){
-      owner.choiceSubject();
+    self.choice = function(subject_id){
+      owner.choiceSubject(subject_id);
     }
   };
 

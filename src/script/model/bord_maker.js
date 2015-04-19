@@ -1,17 +1,28 @@
 (function() {
   "use strict";
   MyDef.BordMaker = [];
-  MyDef.BordMaker.getSubject  = function(){
-    return new MyDef.M.Bord({
-      w:4,
-      h:4,
+  MyDef.BordDatas = {
+    '1': {
+      w:1, h:3,
+      cells:[
+        [ '*'],
+        [ '*'],
+        [ '*']
+      ]
+    },
+    '2': {
+      w:4, h:4,
       cells:[
         [ '-', '*', '*', '-'],
         [ 'o', 'o', 'o', 'o'],
         [ '*', 'o', 'o', '*'],
         [ 'o', '*', '*', 'o']
       ]
-    });
+    },
+    _end_:true
+  };
+  MyDef.BordMaker.getSubject  = function(id){
+    return MyDef.BordDatas[id];
   };
 
   MyDef.BordMaker.getEmpty = function(org_bord){
