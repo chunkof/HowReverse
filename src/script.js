@@ -3,11 +3,13 @@ function importJS() {
   scripts =
     [
       // script start------------------------------
-      'script/common_def.js',
+      'script/_def.js',
       'script/utility.js',
-      'script/model.js',
-      'script/bord_maker.js',
-      'script/view_model.js'
+      // model
+      'script/model/bord.js',
+      'script/model/bord_maker.js',
+      // view model
+      'script/view_model/play_mode.js'
       // script end------------------------------
     ]
   ;
