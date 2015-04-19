@@ -16,42 +16,57 @@
 </head>
 <body>
 <h1>Reverse</h1>
-<div class="bord_area" data-bind="event: { contextmenu: undo }">
-  <h2>subject</h2>
-  <div class="bord" data-bind="with: subject_bord">
-    <div data-bind="foreach: cells"><!--
+<!--
+***********************************
+  Subject Mode
+***********************************
+-->
+<div id="subject-mode">
+  subject mode
+</div>
+<!--
+***********************************
+  Play Mode
+***********************************
+-->
+<div id="play-mode">
+  <div class="bord-area" data-bind="event: { contextmenu: undo }">
+    <h2>subject</h2>
+    <div class="bord" data-bind="with: subject_bord">
+      <div data-bind="foreach: cells"><!--
     --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
-        --><div class="stone no_select" data-bind="css: $data.putClass">&nbsp;</div><!--
+        --><div class="stone no-select" data-bind="css: $data.putClass">&nbsp;</div><!--
     --></div><!--
     --><span data-bind="if: $data.row_end"><br></span><!--
   --></div>
-    <div class="bord_info">
-      <br>
-      <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
-      <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;/
-      <span>Total:&nbsp;<span data-bind="text: cntStone1()+cntStone2()"></span></span>
+      <div class="bord-info">
+        <br>
+        <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
+        <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;/
+        <span>Total:&nbsp;<span data-bind="text: cntStone1()+cntStone2()"></span></span>
+      </div>
     </div>
-  </div>
-  <br>
-  <h2>play</h2>
-  <div  data-bind="with: play_bord">
-    <div class="bord">
-      <div data-bind="foreach: cells"><!--
+    <br>
+    <h2>play</h2>
+    <div  data-bind="with: play_bord">
+      <div class="bord">
+        <div data-bind="foreach: cells"><!--
       --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
-          --><div class="stone no_select" data-bind="css: $data.putClass">&nbsp;</div><!--
+          --><div class="stone no-select" data-bind="css: $data.putClass">&nbsp;</div><!--
       --></div><!--
       --><span data-bind="if: $data.row_end"><br></span><!--
     --></div>
-    </div>
-    <div class="bord_info">
+      </div>
+      <div class="bord-info">
+        <br>
+        <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
+        <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;/
+        <span>Total:&nbsp;<span data-bind="text: cntStone1()+cntStone2()"></span></span>
+      </div>
       <br>
-      <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
-      <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;/
-      <span>Total:&nbsp;<span data-bind="text: cntStone1()+cntStone2()"></span></span>
+      <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
+      <p><input type="button" value="Undo" data-bind="click: undo"></p>
     </div>
-    <br>
-    <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
-    <p><input type="button" value="Undo" data-bind="click: undo"></p>
   </div>
 </div>
 <script src="script.js"></script>

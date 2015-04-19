@@ -2,7 +2,7 @@ body{
 }
 div{
 }
-.no_select{
+.no-select {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -10,17 +10,16 @@ div{
     -o-user-select: none;
     cursor: default;
 }
-.bord_area{
+.bord-area {
     background-color: #CCCCCC;
-    overflow: hidden;
 }
 .bord{
     padding:0px;
 }
-.bord_info{
+.bord-info {
     font-size: small;
 }
-.inline_block{
+.inline-block {
     display: inline-block;
 }
 
@@ -33,7 +32,7 @@ div{
     border: 1px solid rgba(0, 0, 0, 0);
     vertical-align:bottom;
 }
-.cell_exist{
+.cell-exist {
     border: 1px solid #204020;
     background-color: #318431;
 }

@@ -12,7 +12,7 @@
     self.type = ko.observable(spec.type);
     self.x = spec.x;
     self.y = spec.y;
-    self.existClass = (CELL_TYPE.BLANK == self.type()) ? "" : "cell_exist";
+    self.existClass = (CELL_TYPE.BLANK == self.type()) ? "" : "cell-exist";
     self.putClass = ko.computed(function() {
       var type = this.type();
       if (CELL_TYPE.STONE1==type){
@@ -123,6 +123,6 @@
   };
 
   // Activates knockout.js
-  ko.applyBindings(new ViewModel());
+  ko.applyBindings(new ViewModel(), $("#play-mode")[0]);
 
 })();
