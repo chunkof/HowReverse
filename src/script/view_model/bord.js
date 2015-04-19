@@ -1,5 +1,5 @@
 (function() {
-"use strict";
+  "use strict";
   //------------------
   // Cell
   //------------------
@@ -107,22 +107,5 @@
       self.nextStone(model.nextStone);
     };
   };
-
-  //------------------
-  // ViewModel
-  //------------------
-  var ViewModel = function() {
-    var self = this;
-    var subject = MyDef.BordMaker.getSubject();
-    var play    = MyDef.BordMaker.getEmpty(subject);
-    self.subject_bord = ko.observable(new MyDef.VM.Bord({model:subject}));
-    self.play_bord    = ko.observable(new MyDef.VM.Bord({model:play}));
-    self.undo = function(){
-      self.play_bord().undo();
-    };
-  };
-
-  // Activates knockout.js
-  ko.applyBindings(new ViewModel(), $("#play-mode")[0]);
 
 })();

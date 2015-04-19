@@ -9,7 +9,11 @@ function importJS() {
       'script/model/bord.js',
       'script/model/bord_maker.js',
       // view model
-      'script/view_model/play_mode.js'
+      'script/view_model/bord.js',
+      // scene
+      'script/view_model/scene_play.js',
+      'script/view_model/scene_subject.js',
+      'script/view_model/scene_manager.js'
       // script end------------------------------
     ]
   ;
