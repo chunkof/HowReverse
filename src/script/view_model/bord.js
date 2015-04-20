@@ -40,12 +40,12 @@
     //-------
     // Initialize
     //-------
-    var model = spec.model;
-    self.model = model;
-    self.w = model.w;
-    self.h = model.h;
+    self.owner = spec.owner;
+    self.model = spec.model;
+    self.w = spec.model.w;
+    self.h = spec.model.h;
     // next stone
-    self.nextStone = ko.observable(model.nextStone);
+    self.nextStone = ko.observable(self.model.nextStone);
     self.nextStoneClass = ko.computed(function() {
       var type = self.nextStone();
       if (CELL_TYPE.STONE1==type){return "stone1";}
@@ -58,7 +58,7 @@
     self.cells =  ko.observableArray();
     for (var y=0; y<self.h; ++y){
       for (var x=0; x<self.w; ++x) {
-        var type = model.cells[y][x];
+        var type = self.model.cells[y][x];
         var cell = new MyDef.VM.Cell({owner:self, x:x, y:y, type:type});
         if (CELL_TYPE.STONE1==type) ++cnt_stone1;
         if (CELL_TYPE.STONE2==type) ++cnt_stone2;
@@ -74,14 +74,14 @@
       if (CELL_TYPE.EMPTY != cell.type()){
         return;
       }
-      model.putStone(cell.x, cell.y);
+      self.model.putStone(cell.x, cell.y);
       self.syncModel();
     };
     //-------
     // undo
     //-------
     self.undo = function(){
-      model.undo();
+      self.model.undo();
       self.syncModel();
     };
     //-------
@@ -91,20 +91,47 @@
       // cells
       var cnt_stone1=0;
       var cnt_stone2=0;
+      var cnt_empty =0;
       for (var y=0; y<self.h; ++y){
         for (var x=0; x<self.w; ++x) {
           var num = x + y*self.w;
           var cell = self.cells()[num];
-          var type = model.cells[y][x];
+          var type = self.model.cells[y][x];
           if (CELL_TYPE.STONE1==type) ++cnt_stone1;
           if (CELL_TYPE.STONE2==type) ++cnt_stone2;
-          cell.type(type);
+          if (CELL_TYPE.EMPTY ==type) ++cnt_empty;
+            cell.type(type);
         }
       }
       self.cntStone1(cnt_stone1);
       self.cntStone2(cnt_stone2);
       // other
-      self.nextStone(model.nextStone);
+      self.nextStone(self.model.nextStone);
+      // notify
+      if (0 == cnt_empty){
+        self.owner.notifyFullFilled(self);
+      }
+    };
+    //--------------------
+    //  Has Same Cells
+    //--------------------
+    self.hasSameCells = function(another){
+      // check w h
+      if ((self.w!=another.w) || (self.h!=another.h)){
+        return false;
+      }
+      // check cells
+      for (var y=0; y<self.h; ++y) {
+        for (var x = 0; x < self.w; ++x) {
+          var num = x + y * self.w;
+          var self_type    = self.cells()[num].type();
+          var another_type = another.cells()[num].type();
+          if (self_type != another_type){
+            return false;
+          }
+        }
+      }
+      return true;
     };
   };
 
