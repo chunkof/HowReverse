@@ -44,6 +44,7 @@
     self.model = spec.model;
     self.w = spec.model.w;
     self.h = spec.model.h;
+    self.playable = spec.playable;
     // next stone
     self.nextStone = ko.observable(self.model.nextStone);
     self.nextStoneClass = ko.computed(function() {

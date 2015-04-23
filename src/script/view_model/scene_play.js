@@ -26,8 +26,8 @@
     self.activate = function(subject_id){
       var subject = MyDef.BordMaker.getSubject(subject_id);
       var play    = MyDef.BordMaker.getEmpty(subject);
-      self.subject_bord = ko.observable(new MyDef.VM.Bord({owner:self, model:subject}));
-      self.play_bord    = ko.observable(new MyDef.VM.Bord({owner:self, model:play}));
+      self.subject_bord = ko.observable(new MyDef.VM.Bord({owner:self, model:subject, playable:false}));
+      self.play_bord    = ko.observable(new MyDef.VM.Bord({owner:self, model:play,    playable:true}));
       self.isActive(true);
     };
     //--------------------
@@ -42,7 +42,8 @@
     self.notifyFullFilled = function(){
       var solved = self.subject_bord().hasSameCells(self.play_bord());
       if (true == solved){
-        alert("Be Solved!!");
+        setTimeout(200, alert("Be Solved!!"));
+
       }
     };
   };
