@@ -5,6 +5,12 @@ MyUt  = [];
   MyUt.cloneArray = function(org){
     return $.extend(true, [], org);
   };
+  MyUt.withDefault = function(org, def){
+    if (undefined == org){
+      return def;
+    }
+    return org;
+  };
 })();
 
 // Utility on Domain

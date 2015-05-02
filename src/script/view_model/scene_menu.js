@@ -3,14 +3,14 @@
   //------------------
   // ViewModel
   //------------------
-  MyDef.VM.SceneSubject = function(owner) {
+  MyDef.VM.SceneMenu = function(owner) {
     var self = this;
     self.owner = owner;
     //--------------------
     //  Initialize
     //--------------------
     // binding
-    var scene = $('#scene-subject')[0];
+    var scene = $('#scene-menu')[0];
     self.isActive = ko.observable(false);
     ko.cleanNode(scene);
     ko.applyBindings(self, scene);
@@ -29,15 +29,9 @@
     //--------------------
     //  choice
     //--------------------
-    self.choice = function(subject_id){
-      owner.choiceSubject(subject_id);
-    };
-    //--------------------
-    //  back
-    //--------------------
-    self.back = function(){
-      self.owner.end(self);
-    };
+    self.choice = function(menu_id){
+      owner.choiceMenu(menu_id);
+    }
   };
 
 })();

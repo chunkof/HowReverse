@@ -67,7 +67,23 @@
     return MyDef.BordDatas[id];
   };
 
-  MyDef.BordMaker.getEmpty = function(org_bord){
+  MyDef.BordMaker.getCanvas  = function(){
+    return new MyDef.M.Bord({
+      w: 8, h: 8,
+      cells: [
+        ['?', '?', '?', '?', '?', '?', '?', '?'],
+        ['?', '?', '?', '?', '?', '?', '?', '?'],
+        ['?', '?', '?', '?', '?', '?', '?', '?'],
+        ['?', '?', '?', '?', '?', '?', '?', '?'],
+        ['?', '?', '?', '?', '?', '?', '?', '?'],
+        ['?', '?', '?', '?', '?', '?', '?', '?'],
+        ['?', '?', '?', '?', '?', '?', '?', '?'],
+        ['?', '?', '?', '?', '?', '?', '?', '?']
+      ]
+    });
+  };
+
+  MyDef.BordMaker.toEmptyBord = function(org_bord){
     var cells = MyUt.cloneArray(org_bord.cells);
     for (var y=0; y<org_bord.h; ++y) {
       for (var x = 0; x < org_bord.w; ++x) {

@@ -37,6 +37,12 @@ div{
     background-color: #318431;
 }
 
+.cell-half-exist {
+    border: 1px solid #204020;
+    background-color: #318431;
+    opacity:0.5;
+}
+
 .stone{
     width: 22px;
     height: 22px;

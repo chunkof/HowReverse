@@ -11,7 +11,9 @@ function importJS() {
       // view model
       'script/view_model/bord.js',
       // scene
+      'script/view_model/scene_menu.js',
       'script/view_model/scene_play.js',
+      'script/view_model/scene_edit.js',
       'script/view_model/scene_subject.js',
       'script/view_model/scene_manager.js'
       // script end------------------------------

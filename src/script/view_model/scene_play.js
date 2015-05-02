@@ -13,7 +13,7 @@
       self.play_bord().undo();
     };
     self.back = function(){
-      self.owner.endPlay();
+      self.owner.end(self);
     };
     // binding
     var scene = $('#scene-play')[0];
@@ -25,7 +25,7 @@
     //--------------------
     self.activate = function(subject_id){
       var subject = MyDef.BordMaker.getSubject(subject_id);
-      var play    = MyDef.BordMaker.getEmpty(subject);
+      var play    = MyDef.BordMaker.toEmptyBord(subject);
       self.subject_bord = ko.observable(new MyDef.VM.Bord({owner:self, model:subject, playable:false}));
       self.play_bord    = ko.observable(new MyDef.VM.Bord({owner:self, model:play,    playable:true}));
       self.isActive(true);

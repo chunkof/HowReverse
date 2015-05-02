@@ -11,17 +11,28 @@
   <link rel="stylesheet" type="text/css" href="layout.css">
   <!-- script -->
   <script src="lib/jquery-2.1.3.js"></script>
-  <script src="lib/knockout-3.3.0.js"></script>
+  <script src="lib/knockout-3.3.0.debug.js"></script>
   <script src="lib/URI.js"></script>
 </head>
 <body>
 <h2>Reverse</h2>
 <!--
 ***********************************
+  Menu
+***********************************
+-->
+<div id="scene-menu" data-bind="if: isActive">
+  <h3>menu</h3>
+  <input type="button" value="subject" data-bind="click: function(){choice('subject')}">
+  <input type="button" value="edit"    data-bind="click: function(){choice('edit')}">
+</div>
+<!--
+***********************************
   Subject
 ***********************************
 -->
 <div id="scene-subject" data-bind="if: isActive">
+  <h3>subject</h3>
   <input type="button" value="subject1" data-bind="click: function(){choice('1')}">
   <input type="button" value="subject2" data-bind="click: function(){choice('2')}">
   <input type="button" value="subject3" data-bind="click: function(){choice('3')}">
@@ -29,6 +40,7 @@
   <input type="button" value="subject5" data-bind="click: function(){choice('5')}">
   <input type="button" value="subject6" data-bind="click: function(){choice('6')}">
   <input type="button" value="subject7" data-bind="click: function(){choice('7')}">
+  <p><input type="button" value="back" data-bind="click: back"></p>
 </div>
 <!--
 ***********************************
@@ -37,7 +49,7 @@
 -->
 <div id="scene-play" data-bind="if: isActive">
   <div class="bord-area" data-bind="event: { contextmenu: undo }">
-    <h3>subject</h3>
+    <h3>target</h3>
     <div data-bind="template: { name: 'bord-template', data: subject_bord }"></div>
     <h3>play</h3>
     <div data-bind="template: { name: 'bord-template', data: play_bord }"></div>
@@ -45,6 +57,18 @@
   <p><input type="button" value="back" data-bind="click: back"></p>
 </div>
 
+<!--
+***********************************
+Edit
+***********************************
+-->
+<div id="scene-edit" data-bind="if: isActive">
+  <div class="bord-area" data-bind="event: { contextmenu: undo }">
+    <h3>edit</h3>
+    <div data-bind="template: { name: 'bord-template', data: edit_bord }"></div>
+  </div>
+  <p><input type="button" value="back" data-bind="click: back"></p>
+</div>
 
 <!--
 ***********************************

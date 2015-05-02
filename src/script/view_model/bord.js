@@ -12,7 +12,22 @@
     self.type = ko.observable(spec.type);
     self.x = spec.x;
     self.y = spec.y;
-    self.existClass = (CELL_TYPE.BLANK == self.type()) ? "" : "cell-exist";
+    self.existClass =ko.computed(function() {
+      var type = self.type();
+      if (CELL_TYPE.BLANK == type){
+        return "";
+      }
+      if ('edit' == self.owner.mode)
+      {
+        if (CELL_TYPE.EMPTY == type){
+          return "cell-half-exist";
+        }
+
+      }
+
+      return "cell-exist";
+    });
+
     self.putClass = ko.computed(function() {
       var type = this.type();
       if (CELL_TYPE.STONE1==type){
@@ -45,6 +60,7 @@
     self.w = spec.model.w;
     self.h = spec.model.h;
     self.playable = spec.playable;
+    self.mode = spec.mode;
     // next stone
     self.nextStone = ko.observable(self.model.nextStone);
     self.nextStoneClass = ko.computed(function() {
