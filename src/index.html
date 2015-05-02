@@ -67,7 +67,17 @@ Edit
     <h3>edit</h3>
     <div data-bind="template: { name: 'bord-template', data: edit_bord }"></div>
   </div>
+  <p>
+    <input type="button" value="clear" data-bind="click: clear">
+  </p>
+  <p>
+    <input type="button" value="export" data-bind="click: toCode">
+    <input type="button" value="import" data-bind="click: toBord">
+  </p>
+  <textarea data-bind="text: code" onclick="this.select()"></textarea>
+
   <p><input type="button" value="back" data-bind="click: back"></p>
+
 </div>
 
 <!--

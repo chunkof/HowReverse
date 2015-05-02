@@ -8,6 +8,7 @@ function importJS() {
       // model
       'script/model/bord.js',
       'script/model/bord_maker.js',
+      'script/model/bord_converter.js',
       // view model
       'script/view_model/bord.js',
       // scene
