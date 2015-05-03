@@ -44,6 +44,7 @@
     self.toCode = function(){
       var model = self.edit_bord().model;
       var code  = MyDef.BordConerter.bordToPlaneCode(model);
+      code = MyDef.BordConerter.planeCodeToCompressCode(code);
       self.code(code);
     };
     //--------------------

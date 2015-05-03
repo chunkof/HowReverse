@@ -11,6 +11,13 @@ MyUt  = [];
     }
     return org;
   };
+  //-----------
+  // base64
+  //-----------
+  var base64list = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-_';
+  MyUt.numToBase64 = function(org){
+    return base64list.charAt(org);
+  }
 })();
 
 // Utility on Domain
@@ -31,5 +38,14 @@ MyUtD = [];
 
     var is_stone = MyUtD.isStone(lhs);
     return is_stone;
+  };
+
+  MyUtD.cellTypeToNumber = function(type){
+    if (CELL_TYPE.BLANK  == type) return 0;
+    if (CELL_TYPE.EMPTY  == type) return 0;
+    if (CELL_TYPE.STONE1 == type) return 1;
+    if (CELL_TYPE.STONE2 == type) return 2;
+
+    return 0;
   };
 })();
