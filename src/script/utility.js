@@ -40,7 +40,7 @@ MyUtD = [];
     return is_stone;
   };
 
-  MyUtD.cellTypeToNumber = function(type){
+  MyUtD.cellTypeToEditNumber = function(type){
     if (CELL_TYPE.BLANK  == type) return 0;
     if (CELL_TYPE.EMPTY  == type) return 0;
     if (CELL_TYPE.STONE1 == type) return 1;
