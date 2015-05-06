@@ -23,8 +23,7 @@
     //--------------------
     //  Activate
     //--------------------
-    self.activate = function(subject_id){
-      var subject = MyDef.BordMaker.getSubject(subject_id);
+    self.activate = function(subject){
       var play    = MyDef.BordMaker.toEmptyBord(subject);
       self.subject_bord = ko.observable(new MyDef.VM.Bord({owner:self, model:subject, playable:false}));
       self.play_bord    = ko.observable(new MyDef.VM.Bord({owner:self, model:play,    playable:true}));

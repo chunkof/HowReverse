@@ -39,21 +39,12 @@
       self.owner.end(self);
     };
     //--------------------
-    //  to Code
+    //  to URI
     //--------------------
-    self.toCode = function(){
+    self.toURI = function(){
       var model = self.edit_bord().model;
-      var code  = MyDef.BordConerter.bordToPlaneCode(model);
-      code = MyDef.BordConerter.planeCodeToCompressCode(code);
-      self.code(code);
-    };
-    //--------------------
-    //  to Bord
-    //--------------------
-    self.toBord = function(){
-      var code = self.code();
-      var model = MyDef.BordConerter.planeCodeToBord(code);
-      self.edit_bord(new MyDef.VM.Bord({owner:self, model:model, playable:true, mode:'edit'}));
+      var uri  = MyDef.URI.createPlayURI(model);
+      self.code(uri);
     };
     //--------------------
     //  clear

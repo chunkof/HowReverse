@@ -1,7 +1,15 @@
 (function() {
   "use strict";
-  MyDef.BordConerter = [];
-  MyDef.BordConerter.bordToPlaneCode = function(bord){
+  MyDef.BordConverter = [];
+  var self = MyDef.BordConverter;
+  // Bord -> Compress Code
+  MyDef.BordConverter.bordToCode = function(bord){
+    var plane_code    = self.bordToPlaneCode(bord);
+    var compress_code = self.planeCodeToCompressCode(plane_code);
+    return compress_code;
+  };
+  // Plane Code -> Bord
+  MyDef.BordConverter.bordToPlaneCode = function(bord){
     var code ="";
     code += bord.w.toString();
     code += bord.h.toString();
@@ -12,8 +20,8 @@
     }
     return code;
   };
-
-  MyDef.BordConerter.planeCodeToBord = function(code){
+  // Bord -> Plane Code
+  MyDef.BordConverter.planeCodeToBord = function(code){
 
     var spec ={};
     spec.w = Number(code.charAt(0));
@@ -33,8 +41,8 @@
 
     return new MyDef.M.Bord(spec);
   };
-
-  MyDef.BordConerter.planeCodeToCompressCode = function(plane) {
+  // Plane Code -> Compress Code
+  MyDef.BordConverter.planeCodeToCompressCode = function(plane) {
     var compress = "";
     compress += plane.charAt(0);
     compress += plane.charAt(1);
@@ -57,5 +65,23 @@
     }
 
     return compress;
+  };
+  MyDef.BordConverter.compressCodeToPlaneCode = function(compress){
+    var plane = "";
+
+    plane += compress.charAt(0);
+    plane += compress.charAt(1);
+
+    var cells_code = compress.slice(2);
+    var cell_num   = Number(compress.charAt(0)) * Number(compress.charAt(1));
+    var code_num   = cell_num*3;
+    for (var i=0; i<code_num; ++i){
+      var code = MyUt.base64ToNum(cells_code[i]);
+      plane += MyUtD.EditNumberToCellType((code >> 4)&3);
+      plane += MyUtD.EditNumberToCellType((code >> 2)&3);
+      plane += MyUtD.EditNumberToCellType((code)&3);
+    }
+
+    return plane;
   };
 })();

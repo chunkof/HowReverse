@@ -18,7 +18,11 @@
     //  Start
     //--------------------
     self.start = function(){
-        self.sceneMenu.activate();
+      var bord_model =  MyDef.URI.getBordModel(location);
+      if (null != bord_model){
+        self.scenePlay.activate(bord_model);
+      }
+      self.sceneMenu.activate();
     };
     //--------------------
     //  Choice Menu
@@ -39,7 +43,8 @@
     self.choiceSubject = function(subject_id){
       self.stackScene.push(self.sceneSubject);
       self.sceneSubject.deActivate();
-      self.scenePlay.activate(subject_id);
+      var subject = MyDef.BordMaker.getSubject(subject_id);
+      self.scenePlay.activate(subject);
     };
     //--------------------
     //  End

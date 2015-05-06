@@ -4,6 +4,7 @@
   // ViewModel
   //------------------
   MyDef.VM.SceneMenu = function(owner) {
+    console.log("url="+location);
     var self = this;
     self.owner = owner;
     //--------------------

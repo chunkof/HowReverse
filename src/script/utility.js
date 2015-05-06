@@ -15,8 +15,16 @@ MyUt  = [];
   // base64
   //-----------
   var base64list = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-_';
-  MyUt.numToBase64 = function(org){
-    return base64list.charAt(org);
+  MyUt.numToBase64 = function(num){
+    return base64list.charAt(num);
+  };
+  MyUt.base64ToNum = function(code){
+    for (var i=0; i<base64list.length; ++i){
+      if (code == base64list.charAt(i)){
+        return i;
+      }
+    }
+    return 0;
   }
 })();
 
@@ -39,7 +47,6 @@ MyUtD = [];
     var is_stone = MyUtD.isStone(lhs);
     return is_stone;
   };
-
   MyUtD.cellTypeToEditNumber = function(type){
     if (CELL_TYPE.BLANK  == type) return 0;
     if (CELL_TYPE.EMPTY  == type) return 0;
@@ -47,5 +54,13 @@ MyUtD = [];
     if (CELL_TYPE.STONE2 == type) return 2;
 
     return 0;
+  };
+  MyUtD.EditNumberToCellType = function(num){
+    var type = CELL_TYPE.BLANK;
+    if (0 == num) type = CELL_TYPE.BLANK;
+    if (1 == num) type = CELL_TYPE.STONE1;
+    if (2 == num) type = CELL_TYPE.STONE2;
+
+    return type;
   };
 })();
