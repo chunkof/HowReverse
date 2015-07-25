@@ -34,24 +34,24 @@ div{
 }
 .cell-exist {
     border: 1px solid #204020;
-    background-color: #318431;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .cell-half-exist {
     border: 1px solid #204020;
-    background-color: #318431;
+    background-color: rgba(0, 0, 0, 0);
     opacity:0.5;
 }
 
 .stone{
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: 2px solid rgba(0,0,0,0);
+    width: 32px;
+    height: 32px;
+
+    border: 0px solid rgba(0,0,0,0);
 }
 .cell> .stone{
     position: relative;
-    top: 5px;
+    top: 0px;
     margin: 0 auto;
     padding: 0;
 }
@@ -62,7 +62,7 @@ div{
 }
 .stone2{
     border-color:#000000;
-    background-color: #F0F0F0;
+    background-color: #fce2c4;
 }
 
 
