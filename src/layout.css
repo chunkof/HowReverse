@@ -58,11 +58,25 @@ div{
 
 .stone1{
     border-color:#000000;
-    background-color: #151515;
+    background-color: black;
 }
 .stone2{
     border-color:#000000;
-    background-color: #fce2c4;
+    background-color: white;
 }
-
-
+.stone3{
+    border-color:#000000;
+    background-color: red;
+}
+.stone4{
+    border-color:#000000;
+    background-color: blue;
+}
+.stone5{
+    border-color:#000000;
+    background-color: yellow;
+}
+.stone6{
+    border-color:#000000;
+    background-color: green;
+}

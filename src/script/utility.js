@@ -34,8 +34,12 @@ MyUtD = [];
   "use strict";
   MyUtD.isStone = function(type){
     return  (
-      (CELL_TYPE.STONE1==type)||
-      (CELL_TYPE.STONE2==type)
+        (CELL_TYPE.STONE1==type)
+      ||(CELL_TYPE.STONE2==type)
+      ||(CELL_TYPE.STONE3==type)
+      ||(CELL_TYPE.STONE4==type)
+      ||(CELL_TYPE.STONE5==type)
+      ||(CELL_TYPE.STONE6==type)
     );
 
   };
@@ -52,7 +56,10 @@ MyUtD = [];
     if (CELL_TYPE.EMPTY  == type) return 0;
     if (CELL_TYPE.STONE1 == type) return 1;
     if (CELL_TYPE.STONE2 == type) return 2;
-
+    if (CELL_TYPE.STONE3 == type) return 3;
+    if (CELL_TYPE.STONE4 == type) return 4;
+    if (CELL_TYPE.STONE5 == type) return 5;
+    if (CELL_TYPE.STONE6 == type) return 6;
     return 0;
   };
   MyUtD.EditNumberToCellType = function(num){
@@ -60,6 +67,10 @@ MyUtD = [];
     if (0 == num) type = CELL_TYPE.BLANK;
     if (1 == num) type = CELL_TYPE.STONE1;
     if (2 == num) type = CELL_TYPE.STONE2;
+    if (3 == num) type = CELL_TYPE.STONE3;
+    if (4 == num) type = CELL_TYPE.STONE4;
+    if (5 == num) type = CELL_TYPE.STONE5;
+    if (6 == num) type = CELL_TYPE.STONE6;
 
     return type;
   };

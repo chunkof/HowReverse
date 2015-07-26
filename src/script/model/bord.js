@@ -2,6 +2,7 @@
   "use strict";
   //------------------
   // Bord
+  // @spec : BordSpec
   //------------------
   MyDef.M.Bord = function(spec) {
     var self = this;
@@ -11,7 +12,9 @@
     //--------
     // stone
     //--------
-    self.nextStone = CELL_TYPE.STONE1;
+    var tail_stone = MyUt.withDefault(spec.tailStone, CELL_TYPE.STONE2);
+    self.stoneLoop = StoneUtil.createLoop(tail_stone);
+    self.nextStone = self.stoneLoop[0];
     self.putStone = function(put_x, put_y){
       // record
       self.versionController.record(self);
@@ -27,7 +30,7 @@
       Logic.reverse(self, self.nextStone, put_x, put_y,   1, 1);
       Logic.reverse(self, self.nextStone, put_x, put_y,   1,-1);
       // next
-      self.nextStone = (self.nextStone==CELL_TYPE.STONE1) ? CELL_TYPE.STONE2: CELL_TYPE.STONE1;
+      self.nextStone = StoneUtil.getNext(self.nextStone, self.stoneLoop);
     };
     //--------
     // undo
@@ -75,6 +78,33 @@
     };
   };
 
+  //------------------
+  // Stone Utility
+  //------------------
+  var StoneUtil=[];
+  StoneUtil.createLoop = function(tail){
+    var array = [];
+    for (var i=0; i<STONE_LOOP.length; i++) {
+      var stone = STONE_LOOP[i];
+      array.push(stone);
+      if (stone == tail){
+        break;
+      }
+    }
+    return array;
+  };
+  StoneUtil.getNext = function(current, loop){
+    // get current pos
+    var current_pos=0;
+    for (var i =0; i<loop.length; i++) {
+      if (loop[i] == current){
+        current_pos = i;
+      }
+    }
+    // get next
+    var next_pos = (current_pos+1 < loop.length) ? current_pos+1 : 0;
+    return loop[next_pos];
+  };
   //------------------
   // Bord Logic
   //------------------

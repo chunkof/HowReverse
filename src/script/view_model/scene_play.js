@@ -41,7 +41,7 @@
     self.notifyFullFilled = function(){
       var solved = self.subject_bord().hasSameCells(self.play_bord());
       if (true == solved){
-        setTimeout(200, alert("Be Solved!!"));
+        setTimeout(200, alert("Solved!!"));
 
       }
     };
