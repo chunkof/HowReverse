@@ -12,8 +12,7 @@
     //--------
     // stone
     //--------
-    var tail_stone = MyUt.withDefault(spec.tailStone, CELL_TYPE.STONE2);
-    self.stoneLoop = StoneUtil.createLoop(tail_stone);
+    self.stoneLoop = MyUt.cloneArray(spec.stones);
     self.nextStone = self.stoneLoop[0];
     self.putStone = function(put_x, put_y){
       // record
@@ -117,6 +116,7 @@
     // check
     var other_s_cnt= 0;
     var do_reverse = false;
+    var target_type = undefined;
     for (var x=put_x+dir_x, y=put_y+dir_y;
          (x>=0)&&(x<w)&&(y>=0)&&(y<h);
          x+=dir_x, y+=dir_y)
@@ -129,6 +129,13 @@
       var is_other_s = MyUtD.isOtherStone(put_type, current);
       if (false == is_other_s){
         break;
+      }
+      if (undefined == target_type){
+        target_type = current;
+      }
+      else if (target_type != current){
+      //  do_reverse = false;
+      //  break;
       }
       ++other_s_cnt;
     }

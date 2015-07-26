@@ -9,7 +9,8 @@
         [ '1'],
         [ '1'],
         [ '1']
-      ]
+      ],
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
     },
     '2': {
       w:3, h:3,
@@ -17,14 +18,16 @@
         [ '-', '1', '-'],
         [ '1', '1', '1'],
         [ '-', '2', '-']
-      ]
+      ],
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
     },
     '3': {
       w:4, h:2,
       cells:[
         [ '-', '2', '2', '-'],
         [ '1', '1', '1', '1']
-      ]
+      ],
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
     },
     '4': {
       w:4, h:4,
@@ -33,7 +36,8 @@
         [ '-', '2', '1', '-'],
         [ '-', '1', '2', '-'],
         [ '2', '-', '-', '1']
-      ]
+      ],
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
     },
     '5': {
       w: 4, h: 4,
@@ -42,7 +46,8 @@
         ['2', '2', '2', '2'],
         ['2', '2', '2', '2'],
         ['2', '2', '2', '2']
-      ]
+      ],
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
      },
     '6': {
       w: 4, h: 4,
@@ -51,7 +56,8 @@
         ['2', '1', '2', '1'],
         ['1', '1', '2', '1'],
         ['2', '1', '1', '2']
-      ]
+      ],
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
     },
     '7': {
       w: 4, h: 4,
@@ -60,7 +66,8 @@
         ['2', '2', '1', '2'],
         ['1', '1', '2', '2'],
         ['2', '2', '2', '2']
-      ]
+      ],
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
     },
     _end_:true
   };
@@ -96,7 +103,8 @@
     return new MyDef.M.Bord({
       w:org_bord.w,
       h:org_bord.h,
-      cells:cells
+      cells:cells,
+      stones:org_bord.stones
     });
   };
 

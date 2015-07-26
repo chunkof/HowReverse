@@ -58,7 +58,7 @@ div{
 
 .stone1{
     border-color:#000000;
-    background-color: black;
+    background-color: gray;
 }
 .stone2{
     border-color:#000000;
@@ -66,11 +66,11 @@ div{
 }
 .stone3{
     border-color:#000000;
-    background-color: red;
+    background-color: lightcoral;
 }
 .stone4{
     border-color:#000000;
-    background-color: blue;
+    background-color: lightblue;
 }
 .stone5{
     border-color:#000000;

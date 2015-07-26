@@ -30,12 +30,12 @@
 
     self.putClass = ko.computed(function() {
       var type = this.type();
-      if (CELL_TYPE.STONE1==type){
-        return "stone1";
-      }
-      if (CELL_TYPE.STONE2==type){
-        return "stone2";
-      }
+      if (CELL_TYPE.STONE1==type){return "stone1";}
+      if (CELL_TYPE.STONE2==type){return "stone2";}
+      if (CELL_TYPE.STONE3==type){return "stone3";}
+      if (CELL_TYPE.STONE4==type){return "stone4";}
+      if (CELL_TYPE.STONE5==type){return "stone5";}
+      if (CELL_TYPE.STONE6==type){return "stone6";}
       return "";
     }, this);
     self.row_end = (spec.owner.w == self.x+1);
@@ -67,6 +67,10 @@
       var type = self.nextStone();
       if (CELL_TYPE.STONE1==type){return "stone1";}
       if (CELL_TYPE.STONE2==type){return "stone2";}
+      if (CELL_TYPE.STONE3==type){return "stone3";}
+      if (CELL_TYPE.STONE4==type){return "stone4";}
+      if (CELL_TYPE.STONE5==type){return "stone5";}
+      if (CELL_TYPE.STONE6==type){return "stone6";}
       return "";
     });
     // cells
