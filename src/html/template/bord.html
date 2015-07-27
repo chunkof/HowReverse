@@ -1,0 +1,25 @@
+<!--
+***********************************
+  Template: Bord
+***********************************
+-->
+<script type="text/html" id="bord-template">
+  <div class="bord">
+    <div data-bind="foreach: cells"><!--
+    --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
+        --><div class="stone no-select" data-bind="css: $data.putClass">&nbsp;</div><!--
+    --></div><!--
+    --><span data-bind="if: $data.row_end"><br></span><!--
+  --></div>
+  </div>
+  <div class="bord-info">
+    <br>
+    <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
+    <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;
+  </div>
+  <br>
+  <span data-bind="if: playable">
+    <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
+    <p><input type="button" value="Undo" data-bind="click: undo"></p>
+  </span>
+</script>

@@ -18,43 +18,49 @@
 <h2>Reverse</h2>
 <!--
 ***********************************
-  Menu
+  Template: Bord
 ***********************************
 -->
-<div id="scene-menu" data-bind="if: isActive">
-  <h3>menu</h3>
-  <input type="button" value="subject" data-bind="click: function(){choice('subject')}">
-  <input type="button" value="edit"    data-bind="click: function(){choice('edit')}">
-</div>
-<!--
-***********************************
-  Subject
-***********************************
--->
-<div id="scene-subject" data-bind="if: isActive">
-  <h3>subject</h3>
-  <input type="button" value="subject1" data-bind="click: function(){choice('1')}">
-  <input type="button" value="subject2" data-bind="click: function(){choice('2')}">
-  <input type="button" value="subject3" data-bind="click: function(){choice('3')}">
-  <input type="button" value="subject4" data-bind="click: function(){choice('4')}">
-  <input type="button" value="subject5" data-bind="click: function(){choice('5')}">
-  <input type="button" value="subject6" data-bind="click: function(){choice('6')}">
-  <input type="button" value="subject7" data-bind="click: function(){choice('7')}">
-  <p><input type="button" value="back" data-bind="click: back"></p>
-</div>
-<!--
-***********************************
-  Play
-***********************************
--->
-<div id="scene-play" data-bind="if: isActive">
-  <div class="bord-area" data-bind="event: { contextmenu: undo }">
-    <h3>target</h3>
-    <div data-bind="template: { name: 'bord-template', data: subject_bord }"></div>
-    <h3>play</h3>
-    <div data-bind="template: { name: 'bord-template', data: play_bord }"></div>
+<script type="text/html" id="bord-template">
+  <div class="bord">
+    <div data-bind="foreach: cells"><!--
+    --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
+        --><div class="stone no-select" data-bind="css: $data.putClass">&nbsp;</div><!--
+    --></div><!--
+    --><span data-bind="if: $data.row_end"><br></span><!--
+  --></div>
   </div>
+  <div class="bord-info">
+    <br>
+    <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
+    <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;
+  </div>
+  <br>
+  <span data-bind="if: playable">
+    <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
+    <p><input type="button" value="Undo" data-bind="click: undo"></p>
+  </span>
+</script>
+<!--
+***********************************
+Edit Menu
+***********************************
+-->
+<div id="scene-edit-menu" data-bind="if: isActive">
+  <div class="bord-area" data-bind="event: { contextmenu: undo }">
+    <h3>edit</h3>
+    <div data-bind="template: { name: 'bord-template', data: edit_bord }"></div>
+  </div>
+  <p>
+    <input type="button" value="clear" data-bind="click: clear">
+  </p>
+  <p>
+    <input type="button" value="export" data-bind="click: toURI">
+  </p>
+  <textarea data-bind="text: code" onclick="this.select()"></textarea>
+
   <p><input type="button" value="back" data-bind="click: back"></p>
+
 </div>
 
 <!--
@@ -81,31 +87,44 @@ Edit
 
 <!--
 ***********************************
-  Template: Bord
+  Menu
 ***********************************
 -->
-<script type="text/html" id="bord-template">
-  <div class="bord">
-    <div data-bind="foreach: cells"><!--
-    --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
-        --><div class="stone no-select" data-bind="css: $data.putClass">&nbsp;</div><!--
-    --></div><!--
-    --><span data-bind="if: $data.row_end"><br></span><!--
-  --></div>
+<div id="scene-menu" data-bind="if: isActive">
+  <h3>menu</h3>
+  <input type="button" value="subject" data-bind="click: function(){choice('subject')}">
+  <input type="button" value="edit"    data-bind="click: function(){choice('edit')}">
+</div>
+<!--
+***********************************
+  Play
+***********************************
+-->
+<div id="scene-play" data-bind="if: isActive">
+  <div class="bord-area" data-bind="event: { contextmenu: undo }">
+    <h3>target</h3>
+    <div data-bind="template: { name: 'bord-template', data: subject_bord }"></div>
+    <h3>play</h3>
+    <div data-bind="template: { name: 'bord-template', data: play_bord }"></div>
   </div>
-  <div class="bord-info">
-    <br>
-    <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
-    <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;
-  </div>
-  <br>
-  <span data-bind="if: playable">
-    <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
-    <p><input type="button" value="Undo" data-bind="click: undo"></p>
-  </span>
-</script>
-
+  <p><input type="button" value="back" data-bind="click: back"></p>
+</div>
+<!--
+***********************************
+  Subject
+***********************************
+-->
+<div id="scene-subject" data-bind="if: isActive">
+  <h3>subject</h3>
+  <input type="button" value="subject1" data-bind="click: function(){choice('1')}">
+  <input type="button" value="subject2" data-bind="click: function(){choice('2')}">
+  <input type="button" value="subject3" data-bind="click: function(){choice('3')}">
+  <input type="button" value="subject4" data-bind="click: function(){choice('4')}">
+  <input type="button" value="subject5" data-bind="click: function(){choice('5')}">
+  <input type="button" value="subject6" data-bind="click: function(){choice('6')}">
+  <input type="button" value="subject7" data-bind="click: function(){choice('7')}">
+  <p><input type="button" value="back" data-bind="click: back"></p>
+</div>
 <script src="script.js"></script>
 </body>
 </html>
-
