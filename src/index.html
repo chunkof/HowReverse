@@ -18,53 +18,6 @@
 <h2>Reverse</h2>
 <!--
 ***********************************
-  Template: Bord
-***********************************
--->
-<script type="text/html" id="bord-template">
-  <div class="bord">
-    <div data-bind="foreach: cells"><!--
-    --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
-        --><div class="stone no-select" data-bind="css: $data.putClass">&nbsp;</div><!--
-    --></div><!--
-    --><span data-bind="if: $data.row_end"><br></span><!--
-  --></div>
-  </div>
-  <div class="bord-info">
-    <br>
-    <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
-    <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;
-  </div>
-  <br>
-  <span data-bind="if: playable">
-    <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
-    <p><input type="button" value="Undo" data-bind="click: undo"></p>
-  </span>
-</script>
-<!--
-***********************************
-Edit Menu
-***********************************
--->
-<div id="scene-edit-menu" data-bind="if: isActive">
-  <div class="bord-area" data-bind="event: { contextmenu: undo }">
-    <h3>edit</h3>
-    <div data-bind="template: { name: 'bord-template', data: edit_bord }"></div>
-  </div>
-  <p>
-    <input type="button" value="clear" data-bind="click: clear">
-  </p>
-  <p>
-    <input type="button" value="export" data-bind="click: toURI">
-  </p>
-  <textarea data-bind="text: code" onclick="this.select()"></textarea>
-
-  <p><input type="button" value="back" data-bind="click: back"></p>
-
-</div>
-
-<!--
-***********************************
 Edit
 ***********************************
 -->
@@ -85,6 +38,25 @@ Edit
 
 </div>
 
+<!--
+***********************************
+Edit Menu
+***********************************
+-->
+<div id="scene-edit-menu" data-bind="if: isActive">
+  <form data-bind="submit: ok">
+  pixcel pattern
+    <select name="pixcel_pattern">
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <button type="submit">ok</button>
+  </form>
+
+  <p><input type="button" value="back" data-bind="click: back"></p>
+</div>
 <!--
 ***********************************
   Menu
@@ -116,7 +88,8 @@ Edit
 -->
 <div id="scene-subject" data-bind="if: isActive">
   <h3>subject</h3>
-  <input type="button" value="subject1" data-bind="click: function(){choice('1')}">
+  <input type="button" value="subjec
+  t1" data-bind="click: function(){choice('1')}">
   <input type="button" value="subject2" data-bind="click: function(){choice('2')}">
   <input type="button" value="subject3" data-bind="click: function(){choice('3')}">
   <input type="button" value="subject4" data-bind="click: function(){choice('4')}">
@@ -125,6 +98,31 @@ Edit
   <input type="button" value="subject7" data-bind="click: function(){choice('7')}">
   <p><input type="button" value="back" data-bind="click: back"></p>
 </div>
+<!--
+***********************************
+  Template: Bord
+***********************************
+-->
+<script type="text/html" id="bord-template">
+  <div class="bord">
+    <div data-bind="foreach: cells"><!--
+    --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
+        --><div class="stone no-select" data-bind="css: $data.putClass">&nbsp;</div><!--
+    --></div><!--
+    --><span data-bind="if: $data.row_end"><br></span><!--
+  --></div>
+  </div>
+  <div class="bord-info">
+    <br>
+    <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
+    <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;
+  </div>
+  <br>
+  <span data-bind="if: playable">
+    <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
+    <p><input type="button" value="Undo" data-bind="click: undo"></p>
+  </span>
+</script>
 <script src="script.js"></script>
 </body>
 </html>

@@ -15,6 +15,7 @@ function importJS() {
       // scene
       'script/view_model/scene_menu.js',
       'script/view_model/scene_play.js',
+      'script/view_model/scene_edit_menu.js',
       'script/view_model/scene_edit.js',
       'script/view_model/scene_subject.js',
       'script/view_model/scene_manager.js'

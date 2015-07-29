@@ -12,6 +12,7 @@
     self.sceneMenu    = new MyDef.VM.SceneMenu(self);
     self.sceneSubject = new MyDef.VM.SceneSubject(self);
     self.scenePlay    = new MyDef.VM.ScenePlay(self);
+    self.sceneEditMenu= new MyDef.VM.SceneEditMenu(self);
     self.sceneEdit    = new MyDef.VM.SceneEdit(self);
     self.stackScene   = [];
     //--------------------
@@ -31,7 +32,7 @@
       var curr_scene = self.sceneMenu;
       var next_scene = self.sceneMenu;
       if ('subject' == menu_id) next_scene = self.sceneSubject;
-      if ('edit'    == menu_id) next_scene = self.sceneEdit;
+      if ('edit'    == menu_id) next_scene = self.sceneEditMenu;
 
       self.stackScene.push(curr_scene);
       curr_scene.deActivate();

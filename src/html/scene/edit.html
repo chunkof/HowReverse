@@ -1,27 +1,5 @@
 <!--
 ***********************************
-Edit Menu
-***********************************
--->
-<div id="scene-edit-menu" data-bind="if: isActive">
-  <div class="bord-area" data-bind="event: { contextmenu: undo }">
-    <h3>edit</h3>
-    <div data-bind="template: { name: 'bord-template', data: edit_bord }"></div>
-  </div>
-  <p>
-    <input type="button" value="clear" data-bind="click: clear">
-  </p>
-  <p>
-    <input type="button" value="export" data-bind="click: toURI">
-  </p>
-  <textarea data-bind="text: code" onclick="this.select()"></textarea>
-
-  <p><input type="button" value="back" data-bind="click: back"></p>
-
-</div>
-
-<!--
-***********************************
 Edit
 ***********************************
 -->

@@ -1,10 +1,13 @@
 'use strict';
-
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var streamqueue  = require('streamqueue');
 
-gulp.task('build', function() {
+//----------
+// build
+//----------
+// html
+gulp.task('build-html', function() {
   return streamqueue({ objectMode: true },
     gulp.src('src/html/header.html'),
     gulp.src('src/html/*/*.html'),
@@ -14,9 +17,16 @@ gulp.task('build', function() {
   .pipe(gulp.dest('src/'));
 });
 
+//----------
+// watch
+//----------
 gulp.task('watch', function(){
-  //watch task
-  gulp.watch('src/html/**/*.html', ['build']);
+  gulp.watch('src/html/**/*.html', ['build-html']);
 });
 
-gulp.task('default', ['build']);
+
+//----------
+// default
+//----------
+gulp.task('default', ['build-html']);
+
