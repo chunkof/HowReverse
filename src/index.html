@@ -21,7 +21,7 @@
 Edit
 ***********************************
 -->
-<div id="scene-edit" data-bind="if: isActive">
+<div class="scene" id="scene-edit" data-bind="if: isActive">
   <div class="bord-area" data-bind="event: { contextmenu: undo }">
     <h3>edit</h3>
     <div data-bind="template: { name: 'bord-template', data: edit_bord }"></div>
@@ -30,7 +30,8 @@ Edit
     <input type="button" value="clear" data-bind="click: clear">
   </p>
   <p>
-    <input type="button" value="export" data-bind="click: toURI">
+    <input type="button" value="export to URI" data-bind="click: toURI">
+    <input type="button" value="export to Code" data-bind="click: toCode">
   </p>
   <textarea data-bind="text: code" onclick="this.select()"></textarea>
 
@@ -43,10 +44,10 @@ Edit
 Edit Menu
 ***********************************
 -->
-<div id="scene-edit-menu" data-bind="if: isActive">
+<div class="scene" id="scene-edit-menu" data-bind="if: isActive">
   <form data-bind="submit: ok">
   pixcel pattern
-    <select name="pixcel_pattern">
+    <select name="pixel_pattern">
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
@@ -62,7 +63,7 @@ Edit Menu
   Menu
 ***********************************
 -->
-<div id="scene-menu" data-bind="if: isActive">
+<div class="scene" id="scene-menu" data-bind="if: isActive">
   <h3>menu</h3>
   <input type="button" value="subject" data-bind="click: function(){choice('subject')}">
   <input type="button" value="edit"    data-bind="click: function(){choice('edit')}">
@@ -72,7 +73,7 @@ Edit Menu
   Play
 ***********************************
 -->
-<div id="scene-play" data-bind="if: isActive">
+<div class="scene" id="scene-play" data-bind="if: isActive">
   <div class="bord-area" data-bind="event: { contextmenu: undo }">
     <h3>target</h3>
     <div data-bind="template: { name: 'bord-template', data: subject_bord }"></div>
@@ -86,10 +87,9 @@ Edit Menu
   Subject
 ***********************************
 -->
-<div id="scene-subject" data-bind="if: isActive">
+<div class="scene" id="scene-subject" data-bind="if: isActive">
   <h3>subject</h3>
-  <input type="button" value="subjec
-  t1" data-bind="click: function(){choice('1')}">
+  <input type="button" value="subject1" data-bind="click: function(){choice('1')}">
   <input type="button" value="subject2" data-bind="click: function(){choice('2')}">
   <input type="button" value="subject3" data-bind="click: function(){choice('3')}">
   <input type="button" value="subject4" data-bind="click: function(){choice('4')}">

@@ -15,8 +15,9 @@
     //--------------------
     //  Activate
     //--------------------
-    self.activate = function(){
-      var model = MyDef.BordMaker.getCanvas();
+    self.activate = function(setting){
+      self.setting = setting;
+      var model = MyDef.BordMaker.getCanvas(setting);
       self.edit_bord = ko.observable(new MyDef.VM.Bord({owner:self, model:model, playable:true, mode:'edit'}));
       self.isActive(true);
     };
@@ -47,10 +48,18 @@
       self.code(uri);
     };
     //--------------------
+    //  to Code
+    //--------------------
+    self.toCode = function(){
+      var model = self.edit_bord().model;
+      var uri  = MyDef.URI.createPlayURI(model);
+      self.code(uri);
+    };
+    //--------------------
     //  clear
     //--------------------
     self.clear = function(){
-      var model = MyDef.BordMaker.getCanvas();
+      var model = MyDef.BordMaker.getCanvas(self.setting);
       self.edit_bord(new MyDef.VM.Bord({owner:self, model:model, playable:true, mode:'edit'}));
     };
   };

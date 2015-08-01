@@ -22,8 +22,12 @@
       var bord_model =  MyDef.URI.getBordModel(location);
       if (null != bord_model){
         self.scenePlay.activate(bord_model);
+        self.stackScene.push(self.sceneMenu);
       }
-      self.sceneMenu.activate();
+      else {
+        self.sceneMenu.activate();
+      }
+      $('.scene').show();
     };
     //--------------------
     //  Choice Menu
@@ -46,6 +50,14 @@
       self.sceneSubject.deActivate();
       var subject = MyDef.BordMaker.getSubject(subject_id);
       self.scenePlay.activate(subject);
+    };
+    //--------------------
+    //  Go Edit
+    //--------------------
+    self.goEdit = function(setting){
+      self.stackScene.push(self.sceneEditMenu);
+      self.sceneEditMenu.deActivate();
+      self.sceneEdit.activate(setting);
     };
     //--------------------
     //  End

@@ -11,12 +11,12 @@
   MyDef.URI.getBordModel = function(org_uri){
     var uri = new URI(org_uri);
     var query = uri.search(true);
-    var compress_code = query.bord;
-    if (undefined == compress_code){
+    var code = query.bord;
+    if (undefined == code){
       return null;
     }
-    var plane_code = MyDef.BordConverter.compressCodeToPlaneCode(compress_code);
-    var bord       = MyDef.BordConverter.planeCodeToBord(plane_code);
+    //var plane_code = MyDef.BordConverter.compressCodeToPlaneCode(compress_code);
+    var bord       = MyDef.BordConverter.planeCodeToBord(code);
 
     return bord;
   }

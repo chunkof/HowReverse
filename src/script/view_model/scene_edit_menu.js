@@ -26,8 +26,11 @@
     //--------------------
     //  ok
     //--------------------
-    self.ok = function(setting){
-      alert("ok:" + setting.pixcel_pattern.value);
+    self.ok = function(form){
+      var setting = {
+        pixel_pattern : form.pixel_pattern.value
+      };
+      self.owner.goEdit(setting);
     };
     //--------------------
     //  back

@@ -5,69 +5,69 @@
   MyDef.BordDatas = {
     '1': {
       w:1, h:3,
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells:[
         [ '1'],
         [ '1'],
         [ '1']
-      ],
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
+      ]
     },
     '2': {
       w:3, h:3,
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells:[
         [ '-', '1', '-'],
         [ '1', '1', '1'],
         [ '-', '2', '-']
-      ],
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
+      ]
     },
     '3': {
       w:4, h:2,
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells:[
         [ '-', '2', '2', '-'],
         [ '1', '1', '1', '1']
-      ],
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
+      ]
     },
     '4': {
       w:4, h:4,
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells:[
         [ '1', '-', '-', '2'],
         [ '-', '2', '1', '-'],
         [ '-', '1', '2', '-'],
         [ '2', '-', '-', '1']
-      ],
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
+      ]
     },
     '5': {
       w: 4, h: 4,
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells: [
         ['-', '2', '2', '-'],
         ['2', '2', '2', '2'],
         ['2', '2', '2', '2'],
         ['2', '2', '2', '2']
-      ],
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
+      ]
      },
     '6': {
       w: 4, h: 4,
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells: [
         ['-', '1', '2', '-'],
         ['2', '1', '2', '1'],
         ['1', '1', '2', '1'],
         ['2', '1', '1', '2']
-      ],
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
+      ]
     },
     '7': {
       w: 4, h: 4,
+      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells: [
         ['-', '1', '2', '-'],
         ['2', '2', '1', '2'],
         ['1', '1', '2', '2'],
         ['2', '2', '2', '2']
-      ],
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2]
+      ]
     },
     _end_:true
   };
@@ -75,8 +75,18 @@
     return MyDef.BordDatas[id];
   };
 
-  MyDef.BordMaker.getCanvas  = function(){
-    return new MyDef.M.Bord({
+  MyDef.BordMaker.getCanvas  = function(setting){
+    var stones =[];
+    if (2 == setting.pixel_pattern){
+      stones = [CELL_TYPE.STONE1,CELL_TYPE.STONE2];}
+    if (3 == setting.pixel_pattern){
+      stones = [CELL_TYPE.STONE1,CELL_TYPE.STONE2,CELL_TYPE.STONE3];}
+    if (4 == setting.pixel_pattern){
+      stones = [CELL_TYPE.STONE1,CELL_TYPE.STONE2,CELL_TYPE.STONE3,CELL_TYPE.STONE4];}
+    if (5 == setting.pixel_pattern){
+      stones = [CELL_TYPE.STONE1,CELL_TYPE.STONE2,CELL_TYPE.STONE3,CELL_TYPE.STONE4,CELL_TYPE.STONE5];}
+
+    var bord = new MyDef.M.Bord({
       w: 8, h: 8,
       cells: [
         ['?', '?', '?', '?', '?', '?', '?', '?'],
@@ -87,8 +97,12 @@
         ['?', '?', '?', '?', '?', '?', '?', '?'],
         ['?', '?', '?', '?', '?', '?', '?', '?'],
         ['?', '?', '?', '?', '?', '?', '?', '?']
-      ]
+      ],
+      stones : stones
     });
+
+
+    return bord;
   };
 
   MyDef.BordMaker.toEmptyBord = function(org_bord){
