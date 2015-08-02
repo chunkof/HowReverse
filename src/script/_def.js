@@ -21,3 +21,12 @@ var STONE_LOOP = [
 var MyDef    = [];
 MyDef.VM = []; // ViewModel
 MyDef.M  = []; // Model
+
+MyDef.DefaultStoneColors = [
+   "696969"    // dim gray
+  ,"ffffff"    // white
+  ,"4169e1"    // royal blue
+  ,"ffb6c1"    // light pink
+  ,"228b22"    // forest green
+  ,"ffa500"    // orange
+];

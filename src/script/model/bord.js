@@ -14,6 +14,7 @@
     //--------
     self.stoneLoop = MyUt.cloneArray(spec.stoneLoop);
     self.nextStone = self.stoneLoop[0];
+    self.stoneColors = MyUt.cloneArray(spec.stoneColors);
     self.putStone = function(put_x, put_y){
       // record
       self.versionController.record(self);

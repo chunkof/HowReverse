@@ -30,6 +30,8 @@
       var setting = {
         pixel_pattern : form.pixel_pattern.value
       };
+
+      MyUtD.SetCssStoneColors(MyDef.DefaultStoneColors);
       self.owner.goEdit(setting);
     };
     //--------------------

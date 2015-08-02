@@ -27,6 +27,9 @@
       var play    = MyDef.BordMaker.toEmptyBord(subject);
       self.subject_bord = ko.observable(new MyDef.VM.Bord({owner:self, model:subject, playable:false}));
       self.play_bord    = ko.observable(new MyDef.VM.Bord({owner:self, model:play,    playable:true}));
+
+      MyUtD.SetCssStoneColors(subject.stoneColors);
+
       self.isActive(true);
     };
     //--------------------

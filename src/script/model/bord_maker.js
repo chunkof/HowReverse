@@ -1,6 +1,5 @@
 (function() {
   "use strict";
-  MyDef.BordMaker = [];
   // BordSpec
   MyDef.BordDatas = {
     '1': {
@@ -15,6 +14,7 @@
     '2': {
       w:3, h:3,
       stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
+      stoneColors:['ff00ff'],
       cells:[
         [ '-', '1', '-'],
         [ '1', '1', '1'],
@@ -65,11 +65,26 @@
     },
     _end_:true
   };
+  MyDef.BordMaker = [];
   MyDef.BordMaker.getSubject  = function(id){
     var subject = MyDef.BordDatas[id];
     if (subject.type == "plane_code"){
       subject = MyDef.BordConverter.planeCodeToBord(subject.code);
     }
+
+    if (subject.stoneColors != undefined){
+      for (var i=0; i<6; ++i){
+        if (subject.stoneColors[i] === undefined){
+          subject.stoneColors.push(MyDef.DefaultStoneColors[i]);
+        }
+
+      }
+    }else{
+      subject.stoneColors = MyUt.cloneArray(MyDef.DefaultStoneColors);
+    }
+
+
+
     return subject;
   };
 
