@@ -12,7 +12,7 @@
     //--------
     // stone
     //--------
-    self.stoneLoop = MyUt.cloneArray(spec.stones);
+    self.stoneLoop = MyUt.cloneArray(spec.stoneLoop);
     self.nextStone = self.stoneLoop[0];
     self.putStone = function(put_x, put_y){
       // record

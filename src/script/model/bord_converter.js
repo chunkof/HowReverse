@@ -16,13 +16,11 @@
     // w h
     code += bord.w.toString();
     code += bord.h.toString();
-    // stones
-    /*
+    // stoneLoop
     for (var i=0; i<bord.stoneLoop.length; ++i){
       code += bord.stoneLoop[i];
     }
     code += '_';
-    */
     // cell
     for (var y=0; y<bord.h; ++y){
       for (var x=0; x<bord.w; ++x) {
@@ -33,19 +31,29 @@
   };
   // Plane Code -> Bord
   MyDef.BordConverter.planeCodeToBord = function(code){
-
     var spec ={};
-    spec.w = Number(code.charAt(0));
-    spec.h = Number(code.charAt(1));
-
+    var pos=0; // pos in code
+    // w h
+    spec.w = Number(code.charAt(pos++));
+    spec.h = Number(code.charAt(pos++));
+    // stoneLoop
+    spec.stoneLoop = [];
+    while (true){
+      var c = code.charAt(pos++);
+      if (c == '_'){
+        break;
+      }
+      spec.stoneLoop.push(c);
+    }
+    // cells
     spec.cells = [];
-    var cells_code = code.slice(2);
-    var cnt = 0;
+    var cells_code = code.slice(pos);
     for (var y=0; y<spec.h; ++y){
       var row = [];
       for (var x=0; x<spec.w; ++x) {
-        row.push(cells_code.charAt(cnt));
-        ++cnt;
+        var index = x + y*spec.w;
+        row.push(cells_code.charAt(index));
+        ++pos;
       }
       spec.cells.push(row);
     }
@@ -77,7 +85,6 @@
   };
   MyDef.BordConverter.compressCodeToPlaneCode = function(compress){
     var plane = "";
-
     // w h
     plane += compress.charAt(0);
     plane += compress.charAt(1);
@@ -90,9 +97,52 @@
       plane += MyUtD.EditNumberToCellType((code >> 3)&7);
       plane += MyUtD.EditNumberToCellType((code)&7);
     }
-    // stones
-
 
     return plane;
   };
+  // minimize
+  MyDef.BordConverter.getMinimized = function(org){
+    // check effective area;
+    var min_x = org.w, max_x = 0;
+    var min_y = org.h, max_y = 0;
+    var has_stone = false;
+    for (var y=0; y<org.h; ++y) {
+      for (var x = 0; x < org.w; ++x) {
+        var cell = org.cells[y][x];
+        if (cell==CELL_TYPE.EMPTY){
+          continue;
+        }
+        has_stone = true;
+        min_x = Math.min(x, min_x);
+        max_x = Math.max(x, max_x);
+        min_y = Math.min(y, min_y);
+        max_y = Math.max(y, max_y);
+      }
+    }
+
+    // check
+    if (false == has_stone){
+      return org;
+    }
+
+    // make minimized
+    var w = max_x - min_x + 1;
+    var h = max_y - min_y + 1;
+    var cells = [];
+    for (var y=0; y<h; ++y) {
+      var row = [];
+      for (var x = 0; x < w; ++x) {
+        var cell = org.cells[min_y+y][min_x+x];
+        cell = (cell==CELL_TYPE.EMPTY) ? CELL_TYPE.BLANK : cell;
+        row.push(cell);
+      }
+      cells.push(row);
+    }
+    return new MyDef.M.Bord({
+      w:w,
+      h:h,
+      cells:cells,
+      stoneLoop:org.stoneLoop
+    });
+  }
 })();

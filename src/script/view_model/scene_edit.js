@@ -44,6 +44,7 @@
     //--------------------
     self.toURI = function(){
       var model = self.edit_bord().model;
+      model = MyDef.BordConverter.getMinimized(model);
       var uri  = MyDef.URI.createPlayURI(model);
       self.code(uri);
     };
@@ -51,9 +52,7 @@
     //  to Code
     //--------------------
     self.toCode = function(){
-      var model = self.edit_bord().model;
-      var uri  = MyDef.URI.createPlayURI(model);
-      self.code(uri);
+      self.toURI();//todo:
     };
     //--------------------
     //  clear

@@ -5,7 +5,7 @@
   MyDef.BordDatas = {
     '1': {
       w:1, h:3,
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
+      stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells:[
         [ '1'],
         [ '1'],
@@ -14,7 +14,7 @@
     },
     '2': {
       w:3, h:3,
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
+      stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells:[
         [ '-', '1', '-'],
         [ '1', '1', '1'],
@@ -23,7 +23,7 @@
     },
     '3': {
       w:4, h:2,
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
+      stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells:[
         [ '-', '2', '2', '-'],
         [ '1', '1', '1', '1']
@@ -31,7 +31,7 @@
     },
     '4': {
       w:4, h:4,
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
+      stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells:[
         [ '1', '-', '-', '2'],
         [ '-', '2', '1', '-'],
@@ -41,7 +41,7 @@
     },
     '5': {
       w: 4, h: 4,
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
+      stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells: [
         ['-', '2', '2', '-'],
         ['2', '2', '2', '2'],
@@ -51,7 +51,7 @@
      },
     '6': {
       w: 4, h: 4,
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
+      stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells: [
         ['-', '1', '2', '-'],
         ['2', '1', '2', '1'],
@@ -61,7 +61,7 @@
     },
     '7': {
       w: 4, h: 4,
-      stones:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
+      stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
       cells: [
         ['-', '1', '2', '-'],
         ['2', '2', '1', '2'],
@@ -98,7 +98,7 @@
         ['?', '?', '?', '?', '?', '?', '?', '?'],
         ['?', '?', '?', '?', '?', '?', '?', '?']
       ],
-      stones : stones
+      stoneLoop : stones
     });
 
 
@@ -118,16 +118,9 @@
       w:org_bord.w,
       h:org_bord.h,
       cells:cells,
-      stones:org_bord.stones
+      stoneLoop:org_bord.stoneLoop
     });
   };
 
-  MyDef.BordMaker.getViewModel = function(model){
-    return new MyDef.VM.Bord({
-      w:model.w,
-      h:model.h,
-      cells:model.cells
-    });
-  };
 
 })();
