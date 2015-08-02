@@ -50,14 +50,8 @@
       ]
      },
     '6': {
-      w: 4, h: 4,
-      stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
-      cells: [
-        ['-', '1', '2', '-'],
-        ['2', '1', '2', '1'],
-        ['1', '1', '2', '1'],
-        ['2', '1', '1', '2']
-      ]
+      type : "plane_code",
+      code : "6512_-1----11---2-1111--1--1--2--2-"
     },
     '7': {
       w: 4, h: 4,
@@ -72,7 +66,11 @@
     _end_:true
   };
   MyDef.BordMaker.getSubject  = function(id){
-    return MyDef.BordDatas[id];
+    var subject = MyDef.BordDatas[id];
+    if (subject.type == "plane_code"){
+      subject = MyDef.BordConverter.planeCodeToBord(subject.code);
+    }
+    return subject;
   };
 
   MyDef.BordMaker.getCanvas  = function(setting){

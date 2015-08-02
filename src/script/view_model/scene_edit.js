@@ -26,6 +26,7 @@
     //--------------------
     self.deActivate = function(){
       self.isActive(false);
+      self.code("");
     };
     //--------------------
     //  undo
@@ -60,6 +61,7 @@
     self.clear = function(){
       var model = MyDef.BordMaker.getCanvas(self.setting);
       self.edit_bord(new MyDef.VM.Bord({owner:self, model:model, playable:true, mode:'edit'}));
+      self.code("");
     };
   };
 
