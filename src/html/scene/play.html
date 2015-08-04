@@ -6,9 +6,9 @@
 <div class="scene" id="scene-play" data-bind="if: isActive">
   <div class="bord-area" data-bind="event: { contextmenu: undo }">
     <h3>target</h3>
-    <div data-bind="template: { name: 'bord-template', data: subject_bord }"></div>
+    <div id="subject_bord" data-bind="template: { name: 'bord-template', data: subject_bord }"></div>
     <h3>play</h3>
-    <div data-bind="template: { name: 'bord-template', data: play_bord }"></div>
+    <div id="play_bord" data-bind="template: { name: 'bord-template', data: play_bord }"></div>
   </div>
   <p><input type="button" value="back" data-bind="click: back"></p>
 </div>

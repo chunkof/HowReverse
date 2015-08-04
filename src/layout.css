@@ -61,3 +61,20 @@ div{
     padding: 0;
 }
 
+#subject_bord .cell{
+    width: 24px;
+    height: 24px;
+}
+#subject_bord .stone{
+    width: 24px;
+    height: 24px;
+}
+#play_bord .cell{
+    width: 48px;
+    height: 48px;
+}
+#play_bord .stone{
+    width: 48px;
+    height: 48px;
+}
+
