@@ -61,27 +61,3 @@ div{
     padding: 0;
 }
 
-.stone1{
-    border-color:#000000;
-    background-color: gray;
-}
-.stone2{
-    border-color:#000000;
-    background-color: white;
-}
-.stone3{
-    border-color:#000000;
-    background-color: lightcoral;
-}
-.stone4{
-    border-color:#000000;
-    background-color: lightblue;
-}
-.stone5{
-    border-color:#000000;
-    background-color: yellow;
-}
-.stone6{
-    border-color:#000000;
-    background-color: green;
-}

@@ -21,6 +21,11 @@
       code += bord.stoneLoop[i];
     }
     code += '_';
+    // stoneColors
+    for (var i=0; i<bord.stoneColors.length; ++i){
+      code += bord.stoneColors[i];
+    }
+    code += '_';
     // cell
     for (var y=0; y<bord.h; ++y){
       for (var x=0; x<bord.w; ++x) {
@@ -44,6 +49,18 @@
         break;
       }
       spec.stoneLoop.push(c);
+    }
+    // stoneColors
+    spec.stoneColors = [];
+    while (true){
+      var c = code.charAt(pos);
+      if (c == '_'){
+        pos++;
+        break;
+      }
+      var color = code.substr(pos, 6);
+      pos = pos+6;
+      spec.stoneColors.push(color);
     }
     // cells
     spec.cells = [];
@@ -142,7 +159,8 @@
       w:w,
       h:h,
       cells:cells,
-      stoneLoop:org.stoneLoop
+      stoneLoop:org.stoneLoop,
+      stoneColors:org.stoneColors
     });
   }
 })();

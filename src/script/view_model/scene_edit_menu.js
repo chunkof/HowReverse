@@ -11,11 +11,13 @@
     self.isActive = ko.observable(false);
     ko.cleanNode(scene);
     ko.applyBindings(self, scene);
+
     //--------------------
     //  Activate
     //--------------------
     self.activate = function(){
       self.isActive(true);
+      self.setDefaultStoneColors();
     };
     //--------------------
     //  DeActivate
@@ -27,11 +29,17 @@
     //  ok
     //--------------------
     self.ok = function(form){
-      var setting = {
-        pixel_pattern : form.pixel_pattern.value
-      };
+      var setting = [];
+      setting.pixel_pattern = $("#pixel_pattern option:selected").text();
+      setting.stoneColors   = [
+             $("#stone_color1").spectrum("get").toHexString().substr(1)
+            ,$("#stone_color2").spectrum("get").toHexString().substr(1)
+            ,$("#stone_color3").spectrum("get").toHexString().substr(1)
+            ,$("#stone_color4").spectrum("get").toHexString().substr(1)];
 
-      MyUtD.SetCssStoneColors(MyDef.DefaultStoneColors);
+      MyUtD.SetCssStoneColors(
+        setting.stoneColors
+      );
       self.owner.goEdit(setting);
     };
     //--------------------
@@ -39,6 +47,12 @@
     //--------------------
     self.back = function(){
       self.owner.end(self);
+    };
+    self.setDefaultStoneColors = function(){
+      $("#stone_color1").spectrum({color: "696969"});
+      $("#stone_color2").spectrum({color: "fefefe"});
+      $("#stone_color3").spectrum({color: "4169e1"});
+      $("#stone_color4").spectrum({color: "ffb6c1"});
     };
   };
 

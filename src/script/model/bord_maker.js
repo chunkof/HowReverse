@@ -51,17 +51,11 @@
      },
     '6': {
       type : "plane_code",
-      code : "6512_-1----11---2-1111--1--1--2--2-"
+      code : "6512_bf9b44dec59e4169e1ffb6c1_-1----11---2-1111--1--1--2--2-"
     },
     '7': {
-      w: 4, h: 4,
-      stoneLoop:[CELL_TYPE.STONE1,CELL_TYPE.STONE2],
-      cells: [
-        ['-', '1', '2', '-'],
-        ['2', '2', '1', '2'],
-        ['1', '1', '2', '2'],
-        ['2', '2', '2', '2']
-      ]
+      type : "plane_code",
+      code : "56123_fcd5ed70b068feff66ffb6c1_--1---131---1--2-2-2-222---2--"
     },
     _end_:true
   };
@@ -111,7 +105,8 @@
         ['?', '?', '?', '?', '?', '?', '?', '?'],
         ['?', '?', '?', '?', '?', '?', '?', '?']
       ],
-      stoneLoop : stones
+      stoneLoop : stones,
+      stoneColors : setting.stoneColors
     });
 
 
@@ -131,7 +126,8 @@
       w:org_bord.w,
       h:org_bord.h,
       cells:cells,
-      stoneLoop:org_bord.stoneLoop
+      stoneLoop:org_bord.stoneLoop,
+      stoneColors:org_bord.stoneColors
     });
   };
 

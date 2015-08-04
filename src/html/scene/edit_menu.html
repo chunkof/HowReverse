@@ -6,14 +6,18 @@ Edit Menu
 <div class="scene" id="scene-edit-menu" data-bind="if: isActive">
   <form data-bind="submit: ok">
   pixcel pattern
-    <select name="pixel_pattern">
+    <select id="pixel_pattern">
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
-      <option value="5">5</option>
     </select>
-    <button type="submit">ok</button>
   </form>
+  <input type='text' id="stone_color1" /><br>
+  <input type='text' id="stone_color2" /><br>
+  <input type='text' id="stone_color3" /><br>
+  <input type='text' id="stone_color4" /><br>
 
+
+  <p><input type="button" value="ok" data-bind="click: ok"></p>
   <p><input type="button" value="back" data-bind="click: back"></p>
 </div>

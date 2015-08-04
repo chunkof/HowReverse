@@ -87,16 +87,12 @@ MyUtD = [];
 // Use it!
 
   MyUtD.SetCssStoneColors = function(colors){
-    var str = "\n" +
-      ".stone1 {background-color:red}\n" +
-      ".stone2 {background-color:blue}";
 
     var str = "\n";
-    str = str + ".stone1 {background-color:#" +colors[0] + "}";
-    str = str + ".stone2 {background-color:#" +colors[1] + "}";
-    str = str + ".stone3 {background-color:#" +colors[2] + "}";
-    str = str + ".stone4 {background-color:#" +colors[4] + "}";
-    str = str + ".stone5 {background-color:#" +colors[5] + "}";
+    str = str + ".stone1 {background-color:#" +colors[0] + "}\n";
+    str = str + ".stone2 {background-color:#" +colors[1] + "}\n";
+    str = str + ".stone3 {background-color:#" +colors[2] + "}\n";
+    str = str + ".stone4 {background-color:#" +colors[4] + "}\n";
 
     $('#stoneColors').html(str);
 
