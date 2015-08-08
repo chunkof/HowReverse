@@ -17,9 +17,9 @@
     <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
     <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;
   </div>
-  <br>
   <span data-bind="if: playable">
-    <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
     <p><input type="button" value="Undo" data-bind="click: undo"></p>
+    <span>next:</span><div class="stone next-stone" data-bind="css: nextStoneClass"></div>
   </span>
+  <br>
 </script>

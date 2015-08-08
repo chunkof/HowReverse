@@ -10,13 +10,12 @@ Edit
   </div>
   <p>
     <input type="button" value="clear" data-bind="click: clear">
+    <input type="button" value="export to URI" data-bind="click: toURI">
   </p>
   <p>
-    <input type="button" value="export to URI" data-bind="click: toURI">
-    <input type="button" value="export to Code" data-bind="click: toCode">
+  <textarea data-bind="text: code" readonly onclick="this.focus(); this.select()"></textarea>
+  <a data-bind="attr: { href: code}" TARGET="_blank" >Play</a>
   </p>
-  <textarea data-bind="text: code" readonly onclick="this.select()"></textarea>
-
   <p><input type="button" value="back" data-bind="click: back"></p>
 
 </div>

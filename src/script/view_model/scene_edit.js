@@ -41,6 +41,13 @@
       self.owner.end(self);
     };
     //--------------------
+    //  play
+    //--------------------
+    self.play = function(){
+      var uri = self.code();
+      window.location.href = uri;
+    };
+    //--------------------
     //  to URI
     //--------------------
     self.toURI = function(){
@@ -48,6 +55,7 @@
       model = MyDef.BordConverter.getMinimized(model);
       var uri  = MyDef.URI.createPlayURI(model);
       self.code(uri);
+      //todo: iphone‚Å‚à—V‚×‚é‚æ‚¤ ƒŠƒ“ƒN‚ğhtml‚É‘‚¢‚ÄA‚»‚Ìhref‚ğ‘‚«Š·‚¦‚é
     };
     //--------------------
     //  to Code

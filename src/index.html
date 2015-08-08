@@ -5,8 +5,9 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Cache-Control" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>HowReverse</title>
+  <title>Pix Reversi</title>
   <meta name="description" content="puzzle game" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="lib/spectrum.css">
   <link rel="stylesheet" type="text/css" href="layout.css">
@@ -18,32 +19,6 @@
   <script src="lib/spectrum.js"></script>
 </head>
 <body>
-<h2>Reverse</h2>
-<!--
-***********************************
-  Template: Bord
-***********************************
--->
-<script type="text/html" id="bord-template">
-  <div class="bord">
-    <div data-bind="foreach: cells"><!--
-    --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
-        --><div class="stone no-select" data-bind="css: $data.putClass">&nbsp;</div><!--
-    --></div><!--
-    --><span data-bind="if: $data.row_end"><br></span><!--
-  --></div>
-  </div>
-  <div class="bord-info">
-    <br>
-    <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
-    <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;
-  </div>
-  <br>
-  <span data-bind="if: playable">
-    <span>next:</span><div class="stone" data-bind="css: nextStoneClass"></div>
-    <p><input type="button" value="Undo" data-bind="click: undo"></p>
-  </span>
-</script>
 <!--
 ***********************************
 Edit
@@ -56,13 +31,12 @@ Edit
   </div>
   <p>
     <input type="button" value="clear" data-bind="click: clear">
+    <input type="button" value="export to URI" data-bind="click: toURI">
   </p>
   <p>
-    <input type="button" value="export to URI" data-bind="click: toURI">
-    <input type="button" value="export to Code" data-bind="click: toCode">
+  <textarea data-bind="text: code" readonly onclick="this.focus(); this.select()"></textarea>
+  <a data-bind="attr: { href: code}" TARGET="_blank" >Play</a>
   </p>
-  <textarea data-bind="text: code" readonly onclick="this.select()"></textarea>
-
   <p><input type="button" value="back" data-bind="click: back"></p>
 
 </div>
@@ -126,10 +100,39 @@ Edit Menu
   <input type="button" value="subject3" data-bind="click: function(){choice('3')}">
   <input type="button" value="subject4" data-bind="click: function(){choice('4')}">
   <input type="button" value="subject5" data-bind="click: function(){choice('5')}">
-  <input type="button" value="subject6" data-bind="click: function(){choice('6')}">
-  <input type="button" value="subject7" data-bind="click: function(){choice('7')}">
+  <input type="button" value="subject6(h)" data-bind="click: function(){choice('6')}">
+  <input type="button" value="subject7(d)" data-bind="click: function(){choice('7')}">
+  <input type="button" value="subject8" data-bind="click: function(){choice('8')}">
+  <input type="button" value="subject9(f)" data-bind="click: function(){choice('9')}">
+  <input type="button" value="subject10" data-bind="click: function(){choice('10')}">
+  <input type="button" value="subject11" data-bind="click: function(){choice('11')}">
   <p><input type="button" value="back" data-bind="click: back"></p>
 </div>
+<!--
+***********************************
+  Template: Bord
+***********************************
+-->
+<script type="text/html" id="bord-template">
+  <div class="bord">
+    <div data-bind="foreach: cells"><!--
+    --><div class="cell" data-bind="click: notifyClick, css:existClass"><!--
+        --><div class="stone no-select" data-bind="css: $data.putClass">&nbsp;</div><!--
+    --></div><!--
+    --><span data-bind="if: $data.row_end"><br></span><!--
+  --></div>
+  </div>
+  <div class="bord-info">
+    <br>
+    <span>Black:&nbsp;<span data-bind="text: cntStone1"></span></span>&nbsp;/
+    <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;
+  </div>
+  <span data-bind="if: playable">
+    <p><input type="button" value="Undo" data-bind="click: undo"></p>
+    <span>next:</span><div class="stone next-stone" data-bind="css: nextStoneClass"></div>
+  </span>
+  <br>
+</script>
 <script src="script.js"></script>
 </body>
 </html>
