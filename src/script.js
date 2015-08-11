@@ -7,6 +7,7 @@ function importJS() {
       'script/utility.js',
       // model
       'script/model/bord.js',
+      'script/model/subject_manager.js',
       'script/model/bord_maker.js',
       'script/model/bord_converter.js',
       'script/model/uri.js',
