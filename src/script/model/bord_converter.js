@@ -38,7 +38,7 @@
   MyDef.BordConverter.planeCodeToBord = function(code){
     var spec ={};
     var pos=0; // pos in code
-    // w h
+    // header
     spec.w = Number(code.charAt(pos++));
     spec.h = Number(code.charAt(pos++));
     // stoneLoop

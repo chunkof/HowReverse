@@ -1,14 +1,14 @@
 'use strict';
 var gulp = require('gulp');
 var concat = require('gulp-concat');
-var streamqueue  = require('streamqueue');
+var stream_queue  = require('streamqueue');
 
 //----------
 // build
 //----------
 // html
 gulp.task('build-html', function() {
-  return streamqueue({ objectMode: true },
+  return stream_queue({ objectMode: true },
     gulp.src('src/html/header.html'),
     gulp.src('src/html/*/*.html'),
     gulp.src('src/html/footer.html')

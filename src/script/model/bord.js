@@ -6,6 +6,7 @@
   //------------------
   MyDef.M.Bord = function(spec) {
     var self = this;
+    self.id = spec.id;
     self.w = spec.w;
     self.h = spec.h;
     self.cells =  spec.cells;

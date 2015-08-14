@@ -27,7 +27,7 @@
       var play    = MyDef.BordMaker.toEmptyBord(subject);
       self.subject_bord = ko.observable(new MyDef.VM.Bord({owner:self, model:subject, playable:false}));
       self.play_bord    = ko.observable(new MyDef.VM.Bord({owner:self, model:play,    playable:true}));
-
+      self.subject_id = subject.id;
       MyUtD.SetCssStoneColors(subject.stoneColors);
 
       self.isActive(true);
@@ -43,9 +43,18 @@
     //--------------------
     self.notifyFullFilled = function(){
       var solved = self.subject_bord().hasSameCells(self.play_bord());
-      if (true == solved){
-        setTimeout(function(){alert("Good!!");}, 200);
+      if (false == solved){
+        return;
       }
+
+      setTimeout(function(){
+        alert("Good!!");
+        if (undefined == self.subject_id){
+          return;
+        }
+        var subject_manager = MyDef.M.getSubjectManager();
+        subject_manager.notifyClear(self.subject_id);
+      }, 200);
     };
   };
 
