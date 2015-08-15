@@ -4,8 +4,13 @@
     var self = this;
     self.owner = owner;
     self.id = spec.id;
-    self.cleared = spec.cleared;
-    self.display_name = self.id + spec.cleared;
+    var disp = "no."+(spec.index+1).toString() + ":" + spec.id;
+    if (true == spec.cleared){
+      disp = disp+"(cleared)";
+    }else{
+
+    }
+    self.display_name = disp;
     self.click = function(){
       self.owner.notifyChoie(self.id);
     };

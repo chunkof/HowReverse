@@ -29,12 +29,6 @@
       self.code("");
     };
     //--------------------
-    //  undo
-    //--------------------
-    self.undo = function(){
-      self.edit_bord().undo();
-    };
-    //--------------------
     //  back
     //--------------------
     self.back = function(){

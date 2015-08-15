@@ -46,7 +46,7 @@
         return undefined;
       }
       var cleared = (true == subject.cleared);
-      return {id : subject.id, cleared: cleared};
+      return {id : subject.id, index: index, cleared: cleared};
     };
     //--------------------
     self.notifyClear = function(id){

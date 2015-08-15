@@ -40,7 +40,12 @@
     self.undo = function(){
       self.versionController.undo(self);
     };
-
+    self.clear = function(){
+      var undid = true;
+      while(true == undid){
+        undid = self.versionController.undo(self);
+      }
+    };
     //--------
     // Memento
     //--------
@@ -71,11 +76,16 @@
       var memento = new MyDef.M.BordMemento(bord.cells, bord.nextStone);
       self.mementoList.push(memento);
     };
+    //undo
+    // return true:did undo / false:nop
     self.undo = function(bord){
       var memento =  self.mementoList.pop();
-      if (memento != undefined) {
-        bord.setMemento(memento);
+      if (memento == undefined) {
+        return false;
       }
+
+      bord.setMemento(memento);
+        return true;
     };
   };
 

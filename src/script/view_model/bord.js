@@ -106,6 +106,13 @@
       self.syncModel();
     };
     //-------
+    // clear
+    //-------
+    self.clear = function(){
+      self.model.clear();
+      self.syncModel();
+    };
+    //-------
     // sync cells
     //-------
     self.syncModel = function(){

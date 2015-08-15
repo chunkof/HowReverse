@@ -121,7 +121,10 @@ Edit Menu
     <span>White:&nbsp;<span data-bind="text: cntStone2"></span></span>&nbsp;
   </div>
   <span data-bind="if: playable">
-    <p><input type="button" value="Undo" data-bind="click: undo"></p>
+    <p>
+       <input type="button" value="Undo"  data-bind="click: undo">
+       <input type="button" value="Clear" data-bind="click: clear">
+    </p>
     <span>next:</span><div class="stone next-stone" data-bind="css: nextStoneClass"></div>
   </span>
   <br>
