@@ -22,7 +22,7 @@
   };
   //--------------------
   p.prototype.loadFromStore = function(){
-    //todo;
+    MyDef.M.StoreData.SyncSubjectBaseStorage();
   };
   //--------------------
   p.prototype.getBord = function(id){
@@ -62,12 +62,14 @@
   p.prototype.notifyClear = function(id){
     var index = MyDef.Subjects.getIndex(id);
     MyDef.Subjects.data[index].cleared = true;
+    MyDef.M.StoreData.SyncSubjectBasData();
   };
   //--------------------
   p.prototype.resetAllResult = function(){
     for (var i=0; i<MyDef.Subjects.data.length; ++i){
       MyDef.Subjects.data[i].cleared = undefined;
     }
+    MyDef.M.StoreData.ClearSubjectStorage();
   };
   
 
