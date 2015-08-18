@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  var storage_name = "_pixreversi_"
+  var storage_name = "_pixreversi_";
   var _store_data = {};
   var _store_data_default = {version:"0.0.1",result:{}};
   MyDef.M.StoreData = {};
@@ -49,7 +49,7 @@
     }
     var data = store.get(storage_name);
     if (!data){
-      data = _initial_data;
+      data = _store_data_default;
     }
     return data;
   };
